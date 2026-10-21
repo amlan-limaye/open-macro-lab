@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "title": "US selected balance-sheet liquidity and reserve cross-check",
+  "output_unit": "USD billions",
+  "alignment": "Exact Wednesday dates; no resampling, interpolation, or filling",
+  "stale_after_days": 10,
+  "series": {
+    "WALCL": {"label": "Fed assets", "unit": "USD millions", "currency": "USD", "frequency": "weekly", "basis": "Wednesday level", "seasonal_adjustment": "NSA", "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level"},
+    "WDTGAL": {"label": "Treasury general account", "unit": "USD millions", "currency": "USD", "frequency": "weekly", "basis": "Wednesday level", "seasonal_adjustment": "NSA", "title_fragment": "U.S. Treasury, General Account: Wednesday Level"},
+    "WLRRAL": {"label": "Total reverse repos", "unit": "USD millions", "currency": "USD", "frequency": "weekly", "basis": "Wednesday level", "seasonal_adjustment": "NSA", "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level"},
+    "WRBWFRBL": {"label": "Reserve balances", "unit": "USD millions", "currency": "USD", "frequency": "weekly", "basis": "Wednesday level", "seasonal_adjustment": "NSA", "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level"}
+  },
+  "recipes": {
+    "liquidity": {"name": "Selected balance-sheet liquidity", "formula": "L = (WALCL − WDTGAL − WLRRAL) / 1000", "coefficients": {"WALCL": "1", "WDTGAL": "-1", "WLRRAL": "-1"}},
+    "reserves": {"name": "Observed reserve balances", "formula": "R = WRBWFRBL / 1000", "coefficients": {"WRBWFRBL": "1"}},
+    "gap": {"name": "Proxy–reserve gap", "formula": "G = L − R", "coefficients": {"WALCL": "1", "WDTGAL": "-1", "WLRRAL": "-1", "WRBWFRBL": "-1"}}
+  },
+  "recipe_count": 2,
+  "interpretation": "Recipe 1 decomposes selected balance-sheet positions; recipe 2 compares them with observed reserves and measures the residual gap. These are accounting descriptions, not causal estimates or trading signals.",
+  "limitations": [
+    "US Federal Reserve balance sheet only; not global liquidity, broad money, private credit, or tradable cash.",
+    "Total reverse repos include foreign official and international accounts and other reverse repos. This is not the popular assets-minus-TGA-minus-ON-RRP formula.",
+    "The gap includes omitted liabilities and capital; it is not an unexplained statistical error or a complete reconciliation of every H.4.1 line.",
+    "Current-vintage history is unsuitable for a historical point-in-time backtest. Observation dates do not establish publication or availability dates.",
+    "Per-observation historical publication dates and vintages are not retrieved. Snapshot comparisons establish changes seen between captures, not the time or reason an official revision occurred.",
+    "The 10-calendar-day stale threshold is an operational warning, not a release-calendar forecast. Same-day captures can straddle an upstream update.",
+    "A rising proxy does not establish easier financial conditions or predictive market returns. No live trading or investment recommendation."
+  ]
+}
