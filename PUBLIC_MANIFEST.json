@@ -114,8 +114,8 @@
       "sha256": "0df7a666bc2c248ecf096fc680c36eb2865d5848c6147e06173809b487122362"
     },
     "examples/synthetic/index.html": {
-      "bytes": 44043,
-      "sha256": "c18268b3b59b7f5654b8ea17242f5199233544ec044d9727a38992919bcb9086"
+      "bytes": 47200,
+      "sha256": "d945590cae55d02e254313b5647580bdcbf61af91b6c588f9d53d8708f7f3400"
     },
     "examples/synthetic/methodology.json": {
       "bytes": 3452,
@@ -123,7 +123,7 @@
     },
     "examples/synthetic/report.json": {
       "bytes": 17733,
-      "sha256": "945079252440b95154a46a6775c0090e3226c2fde9c4fc43d80bf14e621213b8"
+      "sha256": "7cf915a3ebb76e37bb1ebc11fb743e5726883db95b594fe5e83697a3ebe55fa2"
     },
     "open_macro_lab/__init__.py": {
       "bytes": 80,
@@ -182,8 +182,8 @@
       "sha256": "d1d38952cf315973164d43719be7d0a947ac840e67c7dd6fdcc514a611821179"
     },
     "open_macro_lab/report.py": {
-      "bytes": 32100,
-      "sha256": "d79900f7fecf4591f5f4691879ae4f6acbe91dde169a44f2866113628470a849"
+      "bytes": 34111,
+      "sha256": "857d3ab08662c38216b66b3c3724f1fa4350f15a40daf8d2e7038b92425c3619"
     },
     "open_macro_lab/store.py": {
       "bytes": 10049,
@@ -194,8 +194,8 @@
       "sha256": "0b285351ce61f59ce8654a6c064263eb655331501779ec909ea54bea00b5e7ac"
     },
     "scripts/check_interactions.js": {
-      "bytes": 1488,
-      "sha256": "0366850426b29f9e4d25210adfcc1fcfe7c1ab481dacb61199915a31ab7d0484"
+      "bytes": 5211,
+      "sha256": "97df1cdb2225180140a2d06dc4cab36c948099ee40e2502ed6d8382c9b81dec0"
     },
     "scripts/check_report.py": {
       "bytes": 2411,
@@ -210,8 +210,8 @@
       "sha256": "5b9b7a28d7005674ba7c880be4a24f87b7747dcd5d603da34bf90f94cada1546"
     },
     "tests/test_research.py": {
-      "bytes": 19137,
-      "sha256": "01c26acc8b10b50a355e2764fd4f09d82f6fb22b4e42d656b44029cfa0fdc37b"
+      "bytes": 21055,
+      "sha256": "83f77dbc2c866fe9278f26063e8fad32c083935bd95668b3839fdf0ed8114383"
     }
   },
   "license": "MIT (source and synthetic material; source-data rights separate)",
@@ -219,7 +219,7 @@
   "package": "open-macro-lab",
   "package_version": "0.1.0",
   "reviewed_on": "2026-10-21",
-  "runtime_matches_independently_audited_source": true,
+  "runtime_matches_independently_audited_source": false,
   "schema": 1,
   "target_repository": "amlan-limaye/open-macro-lab"
 }
