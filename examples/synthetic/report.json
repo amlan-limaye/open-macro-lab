@@ -1,0 +1,592 @@
+{
+  "as_of": "2025-04-24T21:00:00+00:00",
+  "captured_at": "2025-04-24T21:00:00+00:00",
+  "comparison": {
+    "bridge": {
+      "new_date": "2025-04-23",
+      "old_date": "2025-04-16",
+      "recipes": {
+        "gap": {
+          "after": "2812",
+          "before": "2805",
+          "methodology_effect": "0",
+          "new_observation_effect": "5",
+          "prior_data_effect": "2",
+          "total": "7"
+        },
+        "liquidity": {
+          "after": "5940",
+          "before": "5925",
+          "methodology_effect": "0",
+          "new_observation_effect": "13",
+          "prior_data_effect": "2",
+          "total": "15"
+        },
+        "reserves": {
+          "after": "3128",
+          "before": "3120",
+          "methodology_effect": "0",
+          "new_observation_effect": "8",
+          "prior_data_effect": "0",
+          "total": "8"
+        }
+      }
+    },
+    "counts": {
+      "new_observation": 4,
+      "revised_prior_value": 2
+    },
+    "coverage_changed": false,
+    "events": [
+      {
+        "after": "7152000",
+        "before": "7150000",
+        "date": "2025-04-16",
+        "kind": "revised_prior_value",
+        "series": "WALCL"
+      },
+      {
+        "after": "7160000",
+        "before": null,
+        "date": "2025-04-23",
+        "kind": "new_observation",
+        "series": "WALCL"
+      },
+      {
+        "after": "851000",
+        "before": "850000",
+        "date": "2025-03-12",
+        "kind": "revised_prior_value",
+        "series": "WDTGAL"
+      },
+      {
+        "after": "880000",
+        "before": null,
+        "date": "2025-04-23",
+        "kind": "new_observation",
+        "series": "WDTGAL"
+      },
+      {
+        "after": "340000",
+        "before": null,
+        "date": "2025-04-23",
+        "kind": "new_observation",
+        "series": "WLRRAL"
+      },
+      {
+        "after": "3128000",
+        "before": null,
+        "date": "2025-04-23",
+        "kind": "new_observation",
+        "series": "WRBWFRBL"
+      }
+    ],
+    "message": "Differences observed between saved captures. Revised values are detected at the source-series/date level; exact official revision times and causes are unknown.",
+    "methodology_changed": false,
+    "previous_captured_at": "2025-04-17T21:00:00+00:00",
+    "previous_id": "synthetic-728557a90a99dd4d8f06",
+    "previous_methodology_version": "1.0.0",
+    "raw_bytes_changed": [
+      "WALCL",
+      "WDTGAL",
+      "WLRRAL",
+      "WRBWFRBL"
+    ],
+    "status": "compared"
+  },
+  "confidence": {
+    "arithmetic": "Exact decimal accounting, checked input contracts and matching observation dates.",
+    "economic": "Descriptive proxy with incomplete balance-sheet coverage; no causal or predictive confidence claim.",
+    "temporal": "Current-vintage monitoring. Archive-known availability only, beginning with saved captures; no historical PIT backtest."
+  },
+  "engine_sha256": "4a0b07a225236cebb026abfedfc952c47d4f01e4e0495a6c3c2c24e8a19bf473",
+  "interpretation": "The latest complete Wednesday is 2025-04-23. Over four calendar weeks the selected liquidity proxy rose by 60 USD bn. Fed assets had the largest absolute accounting contribution (40 USD bn). Observed reserves changed by 32 USD bn, while the proxy–reserve gap changed by 28 USD bn. These movements describe selected balance-sheet positions; they do not identify a policy shock or establish an asset-price forecast.",
+  "kind": "synthetic",
+  "latest": {
+    "date": "2025-04-23",
+    "gap": "2812",
+    "inputs": {
+      "WALCL": "7160000",
+      "WDTGAL": "880000",
+      "WLRRAL": "340000",
+      "WRBWFRBL": "3128000"
+    },
+    "liquidity": "5940",
+    "reserves": "3128"
+  },
+  "methodology": {
+    "alignment": "Exact Wednesday dates; no resampling, interpolation, or filling",
+    "interpretation": "Recipe 1 decomposes selected balance-sheet positions; recipe 2 compares them with observed reserves and measures the residual gap. These are accounting descriptions, not causal estimates or trading signals.",
+    "limitations": [
+      "US Federal Reserve balance sheet only; not global liquidity, broad money, private credit, or tradable cash.",
+      "Total reverse repos include foreign official and international accounts and other reverse repos. This is not the popular assets-minus-TGA-minus-ON-RRP formula.",
+      "The gap includes omitted liabilities and capital; it is not an unexplained statistical error or a complete reconciliation of every H.4.1 line.",
+      "Current-vintage history is unsuitable for a historical point-in-time backtest. Observation dates do not establish publication or availability dates.",
+      "Per-observation historical publication dates and vintages are not retrieved. Snapshot comparisons establish changes seen between captures, not the time or reason an official revision occurred.",
+      "The 10-calendar-day stale threshold is an operational warning, not a release-calendar forecast. Same-day captures can straddle an upstream update.",
+      "A rising proxy does not establish easier financial conditions or predictive market returns. No live trading or investment recommendation."
+    ],
+    "output_unit": "USD billions",
+    "recipe_count": 2,
+    "recipes": {
+      "gap": {
+        "coefficients": {
+          "WALCL": "1",
+          "WDTGAL": "-1",
+          "WLRRAL": "-1",
+          "WRBWFRBL": "-1"
+        },
+        "formula": "G = L − R",
+        "name": "Proxy–reserve gap"
+      },
+      "liquidity": {
+        "coefficients": {
+          "WALCL": "1",
+          "WDTGAL": "-1",
+          "WLRRAL": "-1"
+        },
+        "formula": "L = (WALCL − WDTGAL − WLRRAL) / 1000",
+        "name": "Selected balance-sheet liquidity"
+      },
+      "reserves": {
+        "coefficients": {
+          "WRBWFRBL": "1"
+        },
+        "formula": "R = WRBWFRBL / 1000",
+        "name": "Observed reserve balances"
+      }
+    },
+    "series": {
+      "WALCL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Fed assets",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level",
+        "unit": "USD millions"
+      },
+      "WDTGAL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Treasury general account",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "U.S. Treasury, General Account: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "WLRRAL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Total reverse repos",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "WRBWFRBL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Reserve balances",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level",
+        "unit": "USD millions"
+      }
+    },
+    "stale_after_days": 10,
+    "title": "US selected balance-sheet liquidity and reserve cross-check",
+    "version": "1.0.0"
+  },
+  "methodology_sha256": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b",
+  "missing_dates": [],
+  "observation_age_days": 1,
+  "product": "Open Macro Lab",
+  "provisional_name": true,
+  "rows": [
+    {
+      "date": "2025-01-01",
+      "gap": "2700",
+      "inputs": {
+        "WALCL": "7000000",
+        "WDTGAL": "800000",
+        "WLRRAL": "500000",
+        "WRBWFRBL": "3000000"
+      },
+      "liquidity": "5700",
+      "reserves": "3000"
+    },
+    {
+      "date": "2025-01-08",
+      "gap": "2707",
+      "inputs": {
+        "WALCL": "7010000",
+        "WDTGAL": "805000",
+        "WLRRAL": "490000",
+        "WRBWFRBL": "3008000"
+      },
+      "liquidity": "5715",
+      "reserves": "3008"
+    },
+    {
+      "date": "2025-01-15",
+      "gap": "2714",
+      "inputs": {
+        "WALCL": "7020000",
+        "WDTGAL": "810000",
+        "WLRRAL": "480000",
+        "WRBWFRBL": "3016000"
+      },
+      "liquidity": "5730",
+      "reserves": "3016"
+    },
+    {
+      "date": "2025-01-22",
+      "gap": "2721",
+      "inputs": {
+        "WALCL": "7030000",
+        "WDTGAL": "815000",
+        "WLRRAL": "470000",
+        "WRBWFRBL": "3024000"
+      },
+      "liquidity": "5745",
+      "reserves": "3024"
+    },
+    {
+      "date": "2025-01-29",
+      "gap": "2728",
+      "inputs": {
+        "WALCL": "7040000",
+        "WDTGAL": "820000",
+        "WLRRAL": "460000",
+        "WRBWFRBL": "3032000"
+      },
+      "liquidity": "5760",
+      "reserves": "3032"
+    },
+    {
+      "date": "2025-02-05",
+      "gap": "2735",
+      "inputs": {
+        "WALCL": "7050000",
+        "WDTGAL": "825000",
+        "WLRRAL": "450000",
+        "WRBWFRBL": "3040000"
+      },
+      "liquidity": "5775",
+      "reserves": "3040"
+    },
+    {
+      "date": "2025-02-12",
+      "gap": "2742",
+      "inputs": {
+        "WALCL": "7060000",
+        "WDTGAL": "830000",
+        "WLRRAL": "440000",
+        "WRBWFRBL": "3048000"
+      },
+      "liquidity": "5790",
+      "reserves": "3048"
+    },
+    {
+      "date": "2025-02-19",
+      "gap": "2749",
+      "inputs": {
+        "WALCL": "7070000",
+        "WDTGAL": "835000",
+        "WLRRAL": "430000",
+        "WRBWFRBL": "3056000"
+      },
+      "liquidity": "5805",
+      "reserves": "3056"
+    },
+    {
+      "date": "2025-02-26",
+      "gap": "2756",
+      "inputs": {
+        "WALCL": "7080000",
+        "WDTGAL": "840000",
+        "WLRRAL": "420000",
+        "WRBWFRBL": "3064000"
+      },
+      "liquidity": "5820",
+      "reserves": "3064"
+    },
+    {
+      "date": "2025-03-05",
+      "gap": "2763",
+      "inputs": {
+        "WALCL": "7090000",
+        "WDTGAL": "845000",
+        "WLRRAL": "410000",
+        "WRBWFRBL": "3072000"
+      },
+      "liquidity": "5835",
+      "reserves": "3072"
+    },
+    {
+      "date": "2025-03-12",
+      "gap": "2769",
+      "inputs": {
+        "WALCL": "7100000",
+        "WDTGAL": "851000",
+        "WLRRAL": "400000",
+        "WRBWFRBL": "3080000"
+      },
+      "liquidity": "5849",
+      "reserves": "3080"
+    },
+    {
+      "date": "2025-03-19",
+      "gap": "2777",
+      "inputs": {
+        "WALCL": "7110000",
+        "WDTGAL": "855000",
+        "WLRRAL": "390000",
+        "WRBWFRBL": "3088000"
+      },
+      "liquidity": "5865",
+      "reserves": "3088"
+    },
+    {
+      "date": "2025-03-26",
+      "gap": "2784",
+      "inputs": {
+        "WALCL": "7120000",
+        "WDTGAL": "860000",
+        "WLRRAL": "380000",
+        "WRBWFRBL": "3096000"
+      },
+      "liquidity": "5880",
+      "reserves": "3096"
+    },
+    {
+      "date": "2025-04-02",
+      "gap": "2791",
+      "inputs": {
+        "WALCL": "7130000",
+        "WDTGAL": "865000",
+        "WLRRAL": "370000",
+        "WRBWFRBL": "3104000"
+      },
+      "liquidity": "5895",
+      "reserves": "3104"
+    },
+    {
+      "date": "2025-04-09",
+      "gap": "2798",
+      "inputs": {
+        "WALCL": "7140000",
+        "WDTGAL": "870000",
+        "WLRRAL": "360000",
+        "WRBWFRBL": "3112000"
+      },
+      "liquidity": "5910",
+      "reserves": "3112"
+    },
+    {
+      "date": "2025-04-16",
+      "gap": "2807",
+      "inputs": {
+        "WALCL": "7152000",
+        "WDTGAL": "875000",
+        "WLRRAL": "350000",
+        "WRBWFRBL": "3120000"
+      },
+      "liquidity": "5927",
+      "reserves": "3120"
+    },
+    {
+      "date": "2025-04-23",
+      "gap": "2812",
+      "inputs": {
+        "WALCL": "7160000",
+        "WDTGAL": "880000",
+        "WLRRAL": "340000",
+        "WRBWFRBL": "3128000"
+      },
+      "liquidity": "5940",
+      "reserves": "3128"
+    }
+  ],
+  "schema": 1,
+  "snapshot_id": "synthetic-09d6d36db45951529ec6",
+  "sources": [
+    {
+      "bytes": 346,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Fed assets",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/synthetic-09d6d36db45951529ec6/raw/WALCL.csv",
+      "file": "raw/WALCL.csv",
+      "first_observation": "2025-01-01",
+      "label": "Fed assets",
+      "last_observation": "2025-04-23",
+      "latest_age_days": 1,
+      "latest_valid_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "series": "WALCL",
+      "sha256": "4010ddcabd114cfe0c9d88ab4980e9cfce7a420a5472e85ccce9ae3c91d183dc",
+      "url": "synthetic://later/WALCL"
+    },
+    {
+      "bytes": 330,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Treasury general account",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "U.S. Treasury, General Account: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/synthetic-09d6d36db45951529ec6/raw/WDTGAL.csv",
+      "file": "raw/WDTGAL.csv",
+      "first_observation": "2025-01-01",
+      "label": "Treasury general account",
+      "last_observation": "2025-04-23",
+      "latest_age_days": 1,
+      "latest_valid_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "series": "WDTGAL",
+      "sha256": "3ca73fe5707cea4d54cb28b4d8e43cdb291cfeb366668a79194de82605fd5d6c",
+      "url": "synthetic://later/WDTGAL"
+    },
+    {
+      "bytes": 330,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Total reverse repos",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/synthetic-09d6d36db45951529ec6/raw/WLRRAL.csv",
+      "file": "raw/WLRRAL.csv",
+      "first_observation": "2025-01-01",
+      "label": "Total reverse repos",
+      "last_observation": "2025-04-23",
+      "latest_age_days": 1,
+      "latest_valid_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "series": "WLRRAL",
+      "sha256": "313170531ce552de0b699a708a92454b9ceaa005c040f2ac1b56b57fbccda6a1",
+      "url": "synthetic://later/WLRRAL"
+    },
+    {
+      "bytes": 349,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Reserve balances",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/synthetic-09d6d36db45951529ec6/raw/WRBWFRBL.csv",
+      "file": "raw/WRBWFRBL.csv",
+      "first_observation": "2025-01-01",
+      "label": "Reserve balances",
+      "last_observation": "2025-04-23",
+      "latest_age_days": 1,
+      "latest_valid_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "series": "WRBWFRBL",
+      "sha256": "28596f5bdbe2f2a3b4561554f8e3c2cd935df9307d05357e6fbae9355151cdfe",
+      "url": "synthetic://later/WRBWFRBL"
+    }
+  ],
+  "status": "within_age_threshold",
+  "warnings": [],
+  "windows": {
+    "1": {
+      "contributions": {
+        "WALCL": "8",
+        "WDTGAL": "-5",
+        "WLRRAL": "10"
+      },
+      "end": "2025-04-23",
+      "gap": "5",
+      "input_deltas": {
+        "WALCL": "8",
+        "WDTGAL": "5",
+        "WLRRAL": "-10",
+        "WRBWFRBL": "8"
+      },
+      "liquidity": "13",
+      "missing_interior_weeks": 0,
+      "reserves": "8",
+      "start": "2025-04-16",
+      "weeks": 1
+    },
+    "13": {
+      "contributions": {
+        "WALCL": "130",
+        "WDTGAL": "-65",
+        "WLRRAL": "130"
+      },
+      "end": "2025-04-23",
+      "gap": "91",
+      "input_deltas": {
+        "WALCL": "130",
+        "WDTGAL": "65",
+        "WLRRAL": "-130",
+        "WRBWFRBL": "104"
+      },
+      "liquidity": "195",
+      "missing_interior_weeks": 0,
+      "reserves": "104",
+      "start": "2025-01-22",
+      "weeks": 13
+    },
+    "4": {
+      "contributions": {
+        "WALCL": "40",
+        "WDTGAL": "-20",
+        "WLRRAL": "40"
+      },
+      "end": "2025-04-23",
+      "gap": "28",
+      "input_deltas": {
+        "WALCL": "40",
+        "WDTGAL": "20",
+        "WLRRAL": "-40",
+        "WRBWFRBL": "32"
+      },
+      "liquidity": "60",
+      "missing_interior_weeks": 0,
+      "reserves": "32",
+      "start": "2025-03-26",
+      "weeks": 4
+    }
+  }
+}
