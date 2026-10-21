@@ -325,6 +325,42 @@ class ReportAndCLITests(SnapshotCase):
         p=analyze(self.new,self.old)
         self.assertEqual(render(p),render(analyze(self.new,self.old)))
 
+    def test_observation_age_uses_singular_only_for_one_day(self):
+        p=analyze(self.new,self.old)
+        for age, unit in ((0, 'days'), (1, 'day'), (2, 'days'), (21, 'days')):
+            with self.subTest(age=age):
+                p['observation_age_days']=age
+                content=render(p)
+                self.assertIn(f'Latest complete observation age: {age} {unit}.',content)
+                self.assertNotIn('age: 1 days.',content)
+
+    def test_charts_and_tables_have_named_keyboard_scroll_regions(self):
+        class ScrollDocument(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.divs=[];self.content=[];self.regions=[]
+            def handle_starttag(self,tag,attrs):
+                a=dict(attrs)
+                if tag=='div':
+                    self.divs.append(a)
+                    if 'scroll-area' in a.get('class','').split():
+                        self.regions.append(a)
+                if tag in ('svg','table'):
+                    self.content.append((tag,self.divs[-1] if self.divs else {}))
+            def handle_endtag(self,tag):
+                if tag=='div':self.divs.pop()
+        doc=ScrollDocument();doc.feed(render(analyze(self.new,self.old)))
+        self.assertEqual([tag for tag,_ in doc.content].count('svg'),8)
+        self.assertEqual([tag for tag,_ in doc.content].count('table'),7)
+        self.assertEqual(len(doc.regions),len(doc.content))
+        for tag, region in doc.content:
+            with self.subTest(tag=tag,label=region.get('aria-label')):
+                self.assertIn('scroll-area',region.get('class','').split())
+                self.assertEqual(region.get('data-scroll-kind'),'chart' if tag=='svg' else 'table')
+                self.assertEqual(region.get('role'),'region')
+                self.assertTrue(region.get('aria-label'))
+                self.assertEqual(region.get('tabindex'),'0')
+
     def test_html_dynamic_text_is_escaped(self):
         p=analyze(self.new)
         p['interpretation']='<script>alert(1)</script>'
