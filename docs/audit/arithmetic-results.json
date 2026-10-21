@@ -1,0 +1,200 @@
+{
+  "status": "PASS",
+  "snapshot": "official-1c1dd1e38793565f2b84",
+  "capture": "2026-10-21T11:37:11+00:00",
+  "independence": "No project code imports; integer subtraction and rational equality only.",
+  "aligned_weeks": 146,
+  "period": [
+    "2024-01-03",
+    "2026-10-14"
+  ],
+  "hashes_checked": 10,
+  "independently_rechecked_official_cells": 20,
+  "all_history_matches_json_and_csv": true,
+  "selected_observations": [
+    {
+      "date": "2024-01-03",
+      "WALCL_usd_m": 7681024,
+      "WDTGAL_usd_m": 743464,
+      "WLRRAL_usd_m": 1085975,
+      "WRBWFRBL_usd_m": 3459408,
+      "liquidity_usd_bn": "5851.585",
+      "reserves_usd_bn": "3459.408",
+      "gap_usd_bn": "2392.177"
+    },
+    {
+      "date": "2026-07-15",
+      "WALCL_usd_m": 6743028,
+      "WDTGAL_usd_m": 795976,
+      "WLRRAL_usd_m": 354079,
+      "WRBWFRBL_usd_m": 3100448,
+      "liquidity_usd_bn": "5592.973",
+      "reserves_usd_bn": "3100.448",
+      "gap_usd_bn": "2492.525"
+    },
+    {
+      "date": "2026-09-16",
+      "WALCL_usd_m": 6746548,
+      "WDTGAL_usd_m": 991708,
+      "WLRRAL_usd_m": 323803,
+      "WRBWFRBL_usd_m": 2921536,
+      "liquidity_usd_bn": "5431.037",
+      "reserves_usd_bn": "2921.536",
+      "gap_usd_bn": "2509.501"
+    },
+    {
+      "date": "2026-09-23",
+      "WALCL_usd_m": 6747704,
+      "WDTGAL_usd_m": 947317,
+      "WLRRAL_usd_m": 320725,
+      "WRBWFRBL_usd_m": 2969922,
+      "liquidity_usd_bn": "5479.662",
+      "reserves_usd_bn": "2969.922",
+      "gap_usd_bn": "2509.740"
+    },
+    {
+      "date": "2026-09-30",
+      "WALCL_usd_m": 6743031,
+      "WDTGAL_usd_m": 984046,
+      "WLRRAL_usd_m": 361883,
+      "WRBWFRBL_usd_m": 2881686,
+      "liquidity_usd_bn": "5397.102",
+      "reserves_usd_bn": "2881.686",
+      "gap_usd_bn": "2515.416"
+    },
+    {
+      "date": "2026-10-07",
+      "WALCL_usd_m": 6747560,
+      "WDTGAL_usd_m": 885783,
+      "WLRRAL_usd_m": 333739,
+      "WRBWFRBL_usd_m": 3022066,
+      "liquidity_usd_bn": "5528.038",
+      "reserves_usd_bn": "3022.066",
+      "gap_usd_bn": "2505.972"
+    },
+    {
+      "date": "2026-10-14",
+      "WALCL_usd_m": 6755639,
+      "WDTGAL_usd_m": 885823,
+      "WLRRAL_usd_m": 326799,
+      "WRBWFRBL_usd_m": 3030854,
+      "liquidity_usd_bn": "5543.017",
+      "reserves_usd_bn": "3030.854",
+      "gap_usd_bn": "2512.163"
+    }
+  ],
+  "windows": {
+    "1": {
+      "start": "2026-10-07",
+      "end": "2026-10-14",
+      "changes_usd_bn": {
+        "liquidity": "14.979",
+        "reserves": "8.788",
+        "gap": "6.191"
+      },
+      "contributions_usd_bn": {
+        "WALCL": "8.079",
+        "WDTGAL": "-0.040",
+        "WLRRAL": "6.940"
+      }
+    },
+    "4": {
+      "start": "2026-09-16",
+      "end": "2026-10-14",
+      "changes_usd_bn": {
+        "liquidity": "111.980",
+        "reserves": "109.318",
+        "gap": "2.662"
+      },
+      "contributions_usd_bn": {
+        "WALCL": "9.091",
+        "WDTGAL": "105.885",
+        "WLRRAL": "-2.996"
+      }
+    },
+    "13": {
+      "start": "2026-07-15",
+      "end": "2026-10-14",
+      "changes_usd_bn": {
+        "liquidity": "-49.956",
+        "reserves": "-69.594",
+        "gap": "19.638"
+      },
+      "contributions_usd_bn": {
+        "WALCL": "12.611",
+        "WDTGAL": "-89.847",
+        "WLRRAL": "27.280"
+      }
+    }
+  },
+  "supplied_fixture_bridge_usd_bn": {
+    "liquidity": {
+      "before": "5925.000",
+      "prior_data_effect": "2.000",
+      "new_observation_effect": "13.000",
+      "methodology_effect": "0.000",
+      "after": "5940.000",
+      "total": "15.000"
+    },
+    "reserves": {
+      "before": "3120.000",
+      "prior_data_effect": "0.000",
+      "new_observation_effect": "8.000",
+      "methodology_effect": "0.000",
+      "after": "3128.000",
+      "total": "8.000"
+    },
+    "gap": {
+      "before": "2805.000",
+      "prior_data_effect": "2.000",
+      "new_observation_effect": "5.000",
+      "methodology_effect": "0.000",
+      "after": "2812.000",
+      "total": "7.000"
+    }
+  },
+  "supplied_fixture_events": [
+    {
+      "series": "WALCL",
+      "date": "2025-04-16",
+      "kind": "revised_prior_value",
+      "before": 7150000,
+      "after": 7152000
+    },
+    {
+      "series": "WALCL",
+      "date": "2025-04-23",
+      "kind": "new_observation",
+      "before": null,
+      "after": 7160000
+    },
+    {
+      "series": "WDTGAL",
+      "date": "2025-03-12",
+      "kind": "revised_prior_value",
+      "before": 850000,
+      "after": 851000
+    },
+    {
+      "series": "WDTGAL",
+      "date": "2025-04-23",
+      "kind": "new_observation",
+      "before": null,
+      "after": 880000
+    },
+    {
+      "series": "WLRRAL",
+      "date": "2025-04-23",
+      "kind": "new_observation",
+      "before": null,
+      "after": 340000
+    },
+    {
+      "series": "WRBWFRBL",
+      "date": "2025-04-23",
+      "kind": "new_observation",
+      "before": null,
+      "after": 3128000
+    }
+  ]
+}
