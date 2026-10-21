@@ -1,0 +1,46 @@
+name: Publish approved synthetic demo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the verified v0.1.0 source commit
+        uses: actions/checkout@v6
+        with:
+          ref: c16b0486675ed25579eb21c4356819aaffe583e3
+          persist-credentials: false
+
+      - name: Stage only the public synthetic report and license notices
+        run: |
+          mkdir _site
+          cp -R examples/synthetic/. _site/
+          cp LICENSE DATA_LICENSE.md _site/
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload only the prepared static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
