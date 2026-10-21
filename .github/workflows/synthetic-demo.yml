@@ -24,7 +24,7 @@ jobs:
       - name: Check out the verified v0.1.0 source commit
         uses: actions/checkout@v6
         with:
-          ref: c16b0486675ed25579eb21c4356819aaffe583e3
+          ref: 72c0652ce84ebdda91e2b921d733e36e2993f212
           persist-credentials: false
 
       - name: Stage only the public synthetic report and license notices
