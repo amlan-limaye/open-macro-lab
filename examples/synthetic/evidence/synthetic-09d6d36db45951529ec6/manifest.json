@@ -1,0 +1,110 @@
+{
+  "availability_policy": "All rows become known to this archive at captured_at, never at observation_date.",
+  "captured_at": "2025-04-24T21:00:00+00:00",
+  "files": {
+    "methodology.json": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b",
+    "raw/WALCL.csv": "4010ddcabd114cfe0c9d88ab4980e9cfce7a420a5472e85ccce9ae3c91d183dc",
+    "raw/WDTGAL.csv": "3ca73fe5707cea4d54cb28b4d8e43cdb291cfeb366668a79194de82605fd5d6c",
+    "raw/WLRRAL.csv": "313170531ce552de0b699a708a92454b9ceaa005c040f2ac1b56b57fbccda6a1",
+    "raw/WRBWFRBL.csv": "28596f5bdbe2f2a3b4561554f8e3c2cd935df9307d05357e6fbae9355151cdfe"
+  },
+  "kind": "synthetic",
+  "methodology_sha256": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b",
+  "methodology_version": "1.0.0",
+  "requested_start": "2025-01-01",
+  "schema": 1,
+  "sources": {
+    "WALCL": {
+      "bytes": 346,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Fed assets",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WALCL.csv",
+      "first_observation": "2025-01-01",
+      "last_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "sha256": "4010ddcabd114cfe0c9d88ab4980e9cfce7a420a5472e85ccce9ae3c91d183dc",
+      "url": "synthetic://later/WALCL"
+    },
+    "WDTGAL": {
+      "bytes": 330,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Treasury general account",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "U.S. Treasury, General Account: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WDTGAL.csv",
+      "first_observation": "2025-01-01",
+      "last_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "sha256": "3ca73fe5707cea4d54cb28b4d8e43cdb291cfeb366668a79194de82605fd5d6c",
+      "url": "synthetic://later/WDTGAL"
+    },
+    "WLRRAL": {
+      "bytes": 330,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Total reverse repos",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WLRRAL.csv",
+      "first_observation": "2025-01-01",
+      "last_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "sha256": "313170531ce552de0b699a708a92454b9ceaa005c040f2ac1b56b57fbccda6a1",
+      "url": "synthetic://later/WLRRAL"
+    },
+    "WRBWFRBL": {
+      "bytes": 349,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Reserve balances",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WRBWFRBL.csv",
+      "first_observation": "2025-01-01",
+      "last_observation": "2025-04-23",
+      "license": "MIT; synthetic values, not official observations",
+      "missing_values": 0,
+      "observations": 17,
+      "origin": "Deliberately fabricated offline fixture",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2025-04-24T21:00:00+00:00",
+      "sha256": "28596f5bdbe2f2a3b4561554f8e3c2cd935df9307d05357e6fbae9355151cdfe",
+      "url": "synthetic://later/WRBWFRBL"
+    }
+  }
+}
