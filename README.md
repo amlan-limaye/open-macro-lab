@@ -1,0 +1,94 @@
+# Open Macro Lab
+
+**Executable US macro research with inspectable inputs, calculations, and explanations of changed readings.** Version 0.1.0; working name.
+
+Two linked recipes describe the Federal Reserve balance sheet. The package uses Python's standard library, four public data series, exact arithmetic, immutable captured inputs, and a local HTML research report. No API key or account is required.
+
+- **Selected US liquidity proxy:** `L = (WALCL − WDTGAL − WLRRAL) / 1000`, in USD billions. This is assets net of the Treasury general account and **total reverse-repo liabilities**, including foreign official accounts. It differs from a formula subtracting only overnight RRP.
+- **Reserve cross-check:** `R = WRBWFRBL / 1000`, `G = L − R`. The proxy and reserves share an accounting identity; this is a linked accounting comparison, not independent economic validation.
+
+Both use unadjusted Wednesday levels. The proxy is not global liquidity, broad money, investable cash, a causal model, or a demonstrated predictive signal. This is research and education software, with no live trading or investment recommendation.
+
+## Try it offline
+
+Python 3.9 or later; no installation or network is needed. From the repository root:
+
+```sh
+python3 -m open_macro_lab demo
+python3 -m unittest discover -s tests -v
+```
+
+The demo writes `build/demo/index.html`, `report.json`, `history.csv`, `methodology.json`, and raw evidence. The generated report is a local file; keep its folder together to preserve evidence links.
+
+A ready-made [synthetic example](examples/synthetic/index.html) is included. Its values, capture dates, and revisions are **deliberately fabricated**. It demonstrates an exact bridge of **5,925 + 2 prior-data effect + 13 new-endpoint effect + 0 method effect = 5,940 USD bn**. It is not a historical official revision record. GitHub's file viewer shows HTML source; a local browser is needed to render the downloaded report.
+
+The report includes component histories, exact 1/4/13-week comparisons, formulas, interpretation, limitations, original input dates, a changed-observation ledger, and CSV/JSON evidence. No remote scripts, fonts, tracking, or backend service are required.
+
+## Capture official data
+
+`fetch` reads the four official FRED series and their metadata over certificate-verified HTTPS. It preserves original response bytes and retrieval times, verifies the metadata contract, and commits a complete snapshot only after validation.
+
+```sh
+python3 -m open_macro_lab fetch --store data/live --start 2024-01-01
+```
+
+Use the path printed by `fetch` in place of `SNAPSHOT_PATH`:
+
+```sh
+python3 -m open_macro_lab verify SNAPSHOT_PATH
+python3 -m open_macro_lab report --snapshot SNAPSHOT_PATH --output build/live
+```
+
+On a later capture, compare against the saved previous path:
+
+```sh
+python3 -m open_macro_lab report \
+  --snapshot NEW_SNAPSHOT_PATH --previous PREVIOUS_SNAPSHOT_PATH \
+  --as-of now --output build/latest
+```
+
+Network access is needed only for `fetch`. Use a Python environment with a functioning trusted certificate store; do not disable TLS verification to work around a certificate error. The generated `data/` and `build/` folders are ignored by Git. Review data rights before separately distributing a new capture, especially its source HTML metadata.
+
+## Why a reading changed
+
+The cell log distinguishes new observations, changed prior values, historical backfills, filled or newly missing values, and removed observations. Numeric formatting changes are not called revisions. A changed retrieval window is disclosed and suppresses the headline bridge.
+
+For comparable complete endpoints, the numerical bridge applies three steps:
+
+1. Update values at the previous endpoint under the old methodology.
+2. Move to the new endpoint, still under the old methodology.
+3. Apply the new methodology at that new endpoint.
+
+These effects reconcile exactly to the changed result. Revisions elsewhere in history remain visible even when the headline does not move. This is an ordered accounting decomposition; it does not establish the economic cause or timestamp of an official revision.
+
+## Observation dates are not publication dates
+
+Reports use current-vintage history from a selected capture. Historical per-observation publication dates and vintages are not retrieved. A first capture supplies no revision evidence; it is a baseline, not evidence of unchanged history.
+
+`report` defaults its as-of time to capture completion for reproducibility. `--as-of now` evaluates present age; the stale warning starts after 10 calendar days since the latest complete Wednesday. This is an operational threshold, not a release calendar.
+
+To select a capture this archive actually knew by a timezone-qualified timestamp, use `report --store data/live --as-of ISO_TIMESTAMP`. Requests before the first saved capture fail. This conservative archive-known view does **not** constitute a historical point-in-time backtest.
+
+The [real baseline audit](docs/BASELINE_AUDIT.md) documents the separate original capture: 146 weeks through 2026-10-14, with all derived rows independently recomputed and 20 official input cells rechecked. The original captured FRED webpages and full real snapshot are not bundled in this public source release. The existing optional real-snapshot test therefore skips here; the remaining 51 tests run offline.
+
+## Method and maintenance
+
+- [Methodology 1.0.0](docs/METHODOLOGY-v1.md) and [executed JSON definition](open_macro_lab/methodologies/v1.json)
+- [Maintainer handoff](docs/MAINTAINING.md)
+- [Verification scope](VERIFICATION.md)
+- [Next-release check and later visual review](docs/VALIDATION_PLAN.md)
+- [Prior-art and license review](docs/PRIOR_ART.md)
+
+Snapshots embed the method and its hash. Research payloads also hash the Python implementation. Preserve old methods and captures. Intentional methodology edits must change `version`; pass `--methodology PATH` to `fetch` to retain the new method in a capture, or to `report` for an explicitly analysis-only experiment. Source contract changes require a deliberate engine/recipe change and tests.
+
+## Public release contents
+
+`PUBLIC_FILES.txt` is the exact file allowlist. `PUBLIC_MANIFEST.json` records each payload file's SHA-256 and size. `python3 scripts/package_release.py` verifies those bytes and creates a deterministic source ZIP under `dist/`; it performs no network or GitHub action.
+
+Included: original source, tests, documentation, method definition, synthetic fixtures, and the synthetic report with its evidence. Excluded: credentials, personal machine paths, private messages, original live captures, captured source webpages, browser profiles, caches, local logs, and unrelated projects. The runtime code and method 1.0.0 are unchanged from the audited local version.
+
+## License and attribution
+
+Original code, documentation, and synthetic fixtures: [MIT](LICENSE). Source-data rights remain separate; see [DATA_LICENSE.md](DATA_LICENSE.md). The selected official Board series are tagged public domain with citation requested; source attribution and all limitations remain attached to the research. There is no Board or FRED endorsement.
+
+Relevant prior art includes [macro-liquidity-pipeline](https://github.com/lauren-shih/macro-liquidity-pipeline), [macro-data-service](https://github.com/R1cK-ChaN/macro-data-service), and [puremacro](https://github.com/jalonso1979/puremacro). No third-party source code was copied or imported. The contribution is a small maintainable executable research publication, not a claim of novel ingestion technology.

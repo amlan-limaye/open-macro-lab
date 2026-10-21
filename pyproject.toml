@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-macro-lab"
+version = "0.1.0"
+description = "Inspectable local US balance-sheet research recipes"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+open-macro-lab = "open_macro_lab.cli:main"
+
+[tool.setuptools.package-data]
+open_macro_lab = ["methodologies/*.json", "assets/*", "fixtures/*/*.csv"]
+
+[tool.setuptools.packages.find]
+include = ["open_macro_lab*"]

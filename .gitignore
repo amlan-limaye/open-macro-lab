@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.DS_Store
+.env
+.env.*
+!.env.example
+data/
+build/
+dist/
+output/
+node_modules/
+.playwright/
+.playwright-cli/
+*.log
