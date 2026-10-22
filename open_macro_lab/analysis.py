@@ -5,6 +5,7 @@ from datetime import date
 from decimal import Decimal
 from pathlib import Path
 
+from . import __version__
 from .core import (ResearchError, aligned_rows, canonical, change_window,
                    classify_changes, revision_bridge, serializable, sha256, timestamp,
                    validate_method)
@@ -72,6 +73,10 @@ def analyze(snapshot, previous=None, as_of=None, method=None):
                       "raw_bytes_changed": [s for s in snapshot.data if snapshot.manifest["sources"][s]["sha256"] != previous.manifest["sources"][s]["sha256"]],
                       "bridge": None if window_changed else revision_bridge(previous.data, snapshot.data, previous.method, method),
                       "message": "Differences observed between saved captures. Revised values are detected at the source-series/date level; exact official revision times and causes are unknown."}
+        if not events:
+            comparison["message"] = ("No parsed observation values changed between these saved captures. "
+                                     + ("The methodology changed. " if method_changed else "")
+                                     + "This does not rule out changes between captures or outside their saved coverage.")
     sources = []
     for series, metadata in snapshot.manifest["sources"].items():
         valid = [d for d, v in snapshot.data[series].items() if v is not None]
@@ -92,6 +97,7 @@ def analyze(snapshot, previous=None, as_of=None, method=None):
         interpretation += "The four-week comparison is unavailable because its exact endpoint is absent or incomplete. "
     interpretation += "These movements describe selected balance-sheet positions; they do not identify a policy shock or establish an asset-price forecast."
     return serializable({"schema": 1, "product": "Open Macro Lab", "provisional_name": True,
+                         "package_version": __version__,
                          "snapshot_id": snapshot.id, "kind": snapshot.manifest["kind"],
                          "captured_at": snapshot.manifest["captured_at"], "as_of": as_of,
                          "engine_sha256": engine_hash(), "methodology": method,

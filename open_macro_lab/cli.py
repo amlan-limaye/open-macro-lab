@@ -5,10 +5,12 @@ import json
 import sys
 from pathlib import Path
 
+from . import __version__
 from .analysis import analyze
 from .core import ResearchError, load_method, utcnow
 from .report import write_report
 from .store import SERIES, create_snapshot, fetch_snapshot, load_snapshot, select_known_snapshot
+from .workflow import update, verify_report
 
 
 def demo_snapshots(store):
@@ -25,6 +27,7 @@ def demo_snapshots(store):
 
 def parser():
     p = argparse.ArgumentParser(description="Open Macro Lab — local, inspectable US balance-sheet research")
+    p.add_argument("--version", action="version", version="%(prog)s " + __version__)
     commands = p.add_subparsers(dest="command", required=True)
     demo = commands.add_parser("demo", help="Build a clearly labeled synthetic example, fully offline")
     demo.add_argument("--output", default="build/demo")
@@ -42,13 +45,25 @@ def parser():
     report.add_argument("--output", default="build/live")
     verify = commands.add_parser("verify", help="Check all snapshot hashes and data contracts")
     verify.add_argument("snapshot")
+    issue = commands.add_parser("verify-report", help="Recompute a complete report from its attached evidence, fully offline")
+    issue.add_argument("directory")
+    refresh = commands.add_parser("update", help="Capture official data, compare the prior capture, and save a verified issue")
+    refresh.add_argument("--store", default="data/live")
+    refresh.add_argument("--output", default="build/issues", help="Parent directory for immutable per-capture reports")
+    refresh.add_argument("--start", help="Inherit the last capture's start window; first capture defaults to 2024-01-01")
+    refresh.add_argument("--methodology", help="Explicit versioned method; otherwise inherit the last saved method")
     return p
 
 
 def main(argv=None):
     args = parser().parse_args(argv)
     try:
-        if args.command == "fetch":
+        if args.command == "update":
+            result = update(args.store, args.output, args.start, load_method(args.methodology) if args.methodology else None)
+            print(json.dumps(result, indent=2))
+        elif args.command == "verify-report":
+            print(json.dumps(verify_report(args.directory), indent=2))
+        elif args.command == "fetch":
             path = fetch_snapshot(args.store, args.start, load_method(args.methodology) if args.methodology else None)
             print(path)
         elif args.command == "verify":

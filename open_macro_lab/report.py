@@ -222,6 +222,7 @@ def write_report(payload, snapshot, previous, output):
     for r in payload["rows"]:
         values=[str(Decimal(r["inputs"][s])/1000) if r["inputs"][s] is not None else "" for s in ("WALCL","WDTGAL","WLRRAL")]
         writer.writerow([r["date"],payload["kind"]]+values+[r[k] if r[k] is not None else "" for k in ("liquidity","reserves","gap")])
-    (root / "history.csv").write_text(out.getvalue(),encoding="utf-8")
-    (root / "index.html").write_text(render(payload),encoding="utf-8")
+    # Stable UTF-8 bytes avoid host newline translation when an issue is moved.
+    (root / "history.csv").write_bytes(out.getvalue().encode("utf-8"))
+    (root / "index.html").write_bytes(render(payload).encode("utf-8"))
     return root / "index.html"
