@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "Independent method-1.0.0 arithmetic from published numerical CSVs only",
+  "rows": 146,
+  "input_cells": 584,
+  "observation_date": "2026-10-14",
+  "captured_at": "2026-10-21T11:37:11+00:00",
+  "comparison": "first_snapshot",
+  "metadata_webpages_checked": false
+}
