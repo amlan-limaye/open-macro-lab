@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 — 2026-10-22
+
+- Added a prominently dated real-data example: 146 weeks through October 14 from the existing October 21 capture, with attributed input CSVs, actual retrieval times, calculation trace, and downloadable results. No new acquisition or real revision comparison is claimed.
+- Added `export-public`: a separate, strictly allowlisted numerical evidence format. Public reports reproduce without private source HTML; verification explicitly states this narrower scope. Original full-capture verification remains strict.
+- Added independent arithmetic checks of the published numbers and clean installed-package reproduction of the public report outside the checkout.
+- Added read-only Linux/Python 3.9 and Windows/Python 3.13 test CI with full-commit action pins. Prepared explicit real/synthetic site staging and a manual reviewed-commit deployment input; existing Pages permissions are unchanged.
+- Preserved methodology 1.0.0, all baseline calculations, raw numerical inputs, synthetic fixtures, prior visual fixes, and earlier releases. Source-data rights and limitations remain separate from MIT.
+
 ## 0.2.0 — 2026-10-22
 
 - Added `update`: one explicit capture-to-report command, automatic prior-capture selection, inherited coverage/method, verified immutable issues, and machine-readable results.

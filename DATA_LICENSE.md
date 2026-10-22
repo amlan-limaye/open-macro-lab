@@ -6,7 +6,7 @@ This license applies to original project code, documentation, and synthetic
 fixtures. It does not relicense source data, source metadata pages, or any
 third-party material. See DATA_LICENSE.md and docs/PRIOR_ART.md.
 
-Reviewed 2026-10-21. The MIT license covers original project material and synthetic examples, not third-party source data or captured webpage markup.
+Reviewed 2026-10-22. The MIT license covers original project material and synthetic examples, not third-party source data or captured webpage markup.
 
 ## Selected official series
 
@@ -25,12 +25,12 @@ Use the citation: **Board of Governors of the Federal Reserve System (US), [offi
 
 ## What this public release includes
 
-The ready-made report, raw example CSVs, saved synthetic snapshots, and fixtures use fabricated data under MIT. Synthetic capture times and revisions are scenario metadata, not official publication history. They are labeled explicitly in the report and source files' surrounding documentation.
+The `examples/synthetic` report, its raw example CSVs, saved synthetic snapshots, and package fixtures use fabricated data under MIT. Synthetic capture times and revisions are scenario metadata, not official publication history. They are labeled explicitly in the report and source files' surrounding documentation.
 
-The audit documentation quotes selected numerical reference values from the official series with source links and capture context. It preserves the first-baseline limitation. The full original real snapshot and its raw FRED HTML pages remain outside this source release. This avoids treating captured website markup, logos, scripts, or other source-page content as project-licensed material. No official graph image or website design is redistributed.
+The `examples/official` report includes only the four selected numerical CSV series from the saved October 21 capture, their attribution and retrieval times, the method, and derived research results. These official input data retain the source rights above; MIT does not relicense them. No other series is included. The audit documentation quotes selected numerical reference values with source links and capture context. Both preserve the first-baseline limitation. The full original real snapshot and its raw FRED HTML pages remain outside this source release. This avoids treating captured website markup, logos, scripts, or other source-page content as project-licensed material. No official graph image or website design is redistributed.
 
 ## Future acquisitions
 
-`fetch` saves public CSV and HTML responses locally for evidence and contract verification. Keep those generated directories out of version control by default. The selected data rights do not automatically license all downloaded HTML or any later substituted series. Review the current source notice before a separately authorized redistribution.
+`fetch` saves public CSV and HTML responses locally for evidence and contract verification. Keep those generated directories out of version control by default. The selected data rights do not automatically license all downloaded HTML or any later substituted series. Use `export-public` to prepare the selected numerical projection, not a recursive copy of a private capture. The explicit numerical-export format validates the published files without claiming that omitted webpage metadata was rechecked. Review the current source notice before a separately authorized redistribution.
 
 `RRPONTSYD` and `WRESBAL` are not inputs. The former is a different daily overnight measure; the latter is a weekly-average reserve measure. Neither may be silently substituted for the documented Wednesday-level series. Preserve all source attributions and do not broaden a future release's data scope based on this review.

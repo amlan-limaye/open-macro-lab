@@ -1,0 +1,2 @@
+# Evidence hashes and source hashes require byte-identical checkouts on every OS.
+* -text
