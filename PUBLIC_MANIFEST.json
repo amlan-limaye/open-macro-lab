@@ -6,8 +6,8 @@
       "sha256": "c5cad7c5e0ae7a2b061c32d78d1753967baa6f6ad06dc61d501383d86a7d4b6c"
     },
     ".github/workflows/synthetic-demo.yml": {
-      "bytes": 1084,
-      "sha256": "c3433ad44094c3f1e9acf9cc7309a6975caed5cd2680615945ab2fe1e789c695"
+      "bytes": 1824,
+      "sha256": "a5fe3e4ca6bb4d2ea1088400b5ab4d09fee14cd83649eb59ae1f6d777fcd9518"
     },
     ".github/workflows/tests.yml": {
       "bytes": 1980,
