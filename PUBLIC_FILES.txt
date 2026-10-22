@@ -1,3 +1,4 @@
+.github/workflows/synthetic-demo.yml
 .gitignore
 CHANGELOG.md
 DATA_LICENSE.md
@@ -11,6 +12,7 @@ docs/MAINTAINING.md
 docs/METHODOLOGY-v1.md
 docs/PRIOR_ART.md
 docs/VALIDATION_PLAN.md
+docs/WORKFLOW-0.2.0.md
 docs/audit/arithmetic-results.json
 examples/synthetic/evidence/synthetic-09d6d36db45951529ec6/manifest.json
 examples/synthetic/evidence/synthetic-09d6d36db45951529ec6/manifest.sha256
@@ -46,9 +48,12 @@ open_macro_lab/fixtures/later/WRBWFRBL.csv
 open_macro_lab/methodologies/v1.json
 open_macro_lab/report.py
 open_macro_lab/store.py
+open_macro_lab/workflow.py
 pyproject.toml
+scripts/check_install.py
 scripts/check_interactions.js
 scripts/check_report.py
 scripts/make_fixtures.py
 scripts/package_release.py
 tests/test_research.py
+tests/test_workflow.py

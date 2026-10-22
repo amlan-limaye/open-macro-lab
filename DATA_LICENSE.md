@@ -1,5 +1,11 @@
 # Source-data rights and public release boundary
 
+## Project license scope
+
+This license applies to original project code, documentation, and synthetic
+fixtures. It does not relicense source data, source metadata pages, or any
+third-party material. See DATA_LICENSE.md and docs/PRIOR_ART.md.
+
 Reviewed 2026-10-21. The MIT license covers original project material and synthetic examples, not third-party source data or captured webpage markup.
 
 ## Selected official series

@@ -4,17 +4,25 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "open-macro-lab"
-version = "0.1.0"
+version = "0.2.0"
 description = "Inspectable local US balance-sheet research recipes"
+readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/amlan-limaye/open-macro-lab"
+Documentation = "https://github.com/amlan-limaye/open-macro-lab#readme"
 
 [project.scripts]
 open-macro-lab = "open_macro_lab.cli:main"
 
 [tool.setuptools.package-data]
-open_macro_lab = ["methodologies/*.json", "assets/*", "fixtures/*/*.csv"]
+open_macro_lab = ["methodologies/*.json", "fixtures/*/*.csv"]
+
+[tool.setuptools]
+license-files = ["LICENSE", "DATA_LICENSE.md"]
 
 [tool.setuptools.packages.find]
 include = ["open_macro_lab*"]

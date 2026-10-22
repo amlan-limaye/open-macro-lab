@@ -1,29 +1,38 @@
-# Verification scope for v0.1.0
+# Verification scope for v0.2.0
 
-Reviewed 2026-10-21. Original runtime and methodology 1.0.0 are unchanged; this release prepares documentation, packaging, and shareable examples only.
+Reviewed 2026-10-22. This version adds an operational capture/report workflow and complete offline report verification. Methodology 1.0.0, the arithmetic engine, all synthetic fixture bytes, and the original real baseline remain unchanged. The original 0.1.0 release is preserved.
 
-## Automated and independent checks
+## Automated checks
 
-- The original local project passes **52 tests**, including the saved official reference case.
-- The public source distribution runs the same 52-test suite: **51 pass and one optional official-snapshot test skips**, because the full original real capture is deliberately not bundled.
-- Offline checks cover independent hand calculations, units/currency/frequency/basis/seasonal-adjustment mismatches, duplicate/malformed/future observations, missing endpoints and interior gaps, stale-age boundaries, no-lookahead archive selection, revision classes, exact methodology effects, and raw/manifest tamper detection.
-- Synthetic numerical reference: **5,925 + 2 + 13 + 0 = 5,940 USD bn**, with four invented new cells and two invented prior-value changes. These are not real revision observations.
-- The [independent baseline audit](docs/BASELINE_AUDIT.md) recomputed all **146 weeks** and separately rechecked **20 official input cells**. Its scope is accounting, alignment, source semantics, and availability claims; it does not establish economic causality or market performance.
-- HTML/content checks cover required caveats and synthetic labels, finite SVG coordinates, unique IDs, local evidence-link resolution, and absence of externally loaded assets.
-- Range-control code is checked with a minimal Node DOM substitute. This tests the selection behavior in that substitute, not real browser layout, accessibility, or rendering.
-- Public release preparation uses an exact file allowlist and SHA-256 inventory. The inspected payload excludes private material, host-specific paths, original live captures and source HTML, caches, and unreviewed files. Pattern scanning is a bounded safeguard, not a proof that all possible secrets can be detected.
+- The public suite runs **76 tests: 75 pass and one optional official-snapshot test skips**, on Python 3.9.6 and 3.13.7. The full original official capture is deliberately not in the public bundle.
+- Existing checks cover independent hand calculations; unit/currency/frequency/basis/seasonal mismatches; malformed/future observations; missing endpoints and interior gaps; stale-age boundaries; no-lookahead selection; revision classes; exact method/data bridges; hash tampering; day plurals; and named chart/table scroll regions.
+- New workflow tests cover first-run baselines, previous-capture selection, inherited method/coverage, exclusion of future and synthetic captures, idempotent retries, acquisition/write failures, corrupt archives, incomplete-prior recovery, unchanged-value wording, portable output bytes, and CLI behavior.
+- Report verification detects altered input bytes, calculations, CSV, HTML, invalid evidence identifiers, and a mismatched source engine. A successful check does not mutate the issue or use network access.
+- The acquisition integration test exercises the actual metadata/CSV adapter through the CLI with **fabricated HTTP responses** in temporary directories. Its invented revisions are not official revision evidence.
+- Clean wheel installations pass in empty Python 3.9.6 and 3.13.7 virtual environments outside the checkout. Checks cover the console command, isolated module command, packaged method/fixtures/license notices, offline demo, report reproduction, and `pip check`. The wheel has zero runtime dependencies. Building it requires setuptools; installation of the built wheel uses no network.
+- Synthetic reference remains **5,925 + 2 prior-data effect + 13 new-endpoint effect + 0 method effect = 5,940 USD bn**.
+- Content and Node mock DOM interaction checks pass. These are not browser rendering or screen-reader checks.
 
 ```sh
 python3 -m unittest discover -s tests -v
+python3 -m open_macro_lab verify-report examples/synthetic
 python3 scripts/check_report.py examples/synthetic
 node scripts/check_interactions.js examples/synthetic/index.html
+python3 -m pip wheel --no-deps --wheel-dir dist .
+python3 scripts/check_install.py dist/open_macro_lab-0.2.0-py3-none-any.whl
 python3 scripts/package_release.py
 ```
 
-Node is needed only for the optional interaction check. Python package/report runtime uses no third-party dependencies. The ZIP is intended for local source distribution; the packaging command never publishes.
+## Existing real evidence
 
-## Not yet verified
+The original official snapshot was captured **2026-10-21 11:37:11 UTC**, with observations through **2026-10-14**. The [independent baseline audit](docs/BASELINE_AUDIT.md) previously recomputed all **146 weeks** and checked **20 official input cells**.
 
-Actual desktop/mobile rendering, real-browser clicks/downloads, screen-reader behavior, and print rendering remain **pending**. No browser, mouse, keyboard, localhost server, or denied preview route was used during release preparation. Authored responsive CSS and static content checks are not claimed as visual verification. See the [later validation plan](docs/VALIDATION_PLAN.md).
+Version 0.2.0 reproduces that saved baseline locally and verifies the complete resulting report. All 146 calculated rows and research values match the prior output; only implementation provenance (source hash and newly recorded package version) changes. This reuses existing evidence; it is **not a new acquisition or observed revision comparison**. Its report and captured source HTML stay outside the public bundle. The separate next-real-release comparison remains pending.
 
-The real baseline is one capture. Official revisions between captures are therefore not yet measured. Historical per-observation publication timestamps and vintage access remain unavailable; a historical PIT backtest is unsupported. Neither the tests nor the audit establish a predictive trading edge.
+## Visual and evidence boundaries
+
+The publisher reported verification of the prior singular-day and narrow-screen overflow fixes at source commit `72c0652ce84ebdda91e2b921d733e36e2993f212`. Those fixes are preserved. This workflow pass performs no browser actions and claims no new screenshot, screen-reader, or print review. Chart geometry, labels, and table values are unchanged.
+
+Hashes and recomputation establish consistency with saved bytes and the specified implementation. They do not establish signed source authenticity, the exact release/revision time, economic causality, or predictive trading performance. Historical vintages and per-observation publication timestamps remain unavailable; historical point-in-time backtesting is unsupported.
+
+The public allowlist contains original project material and synthetic examples only. Source-data rights remain separate. The MIT scope paragraph was moved verbatim from LICENSE into DATA_LICENSE.md; the grant, disclaimer, and rights boundary were preserved. GitHub license recognition must be checked after publication; this local check does not claim a platform classification result.

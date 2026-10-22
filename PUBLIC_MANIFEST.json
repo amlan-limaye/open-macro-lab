@@ -1,41 +1,45 @@
 {
   "bundled_data": "synthetic only; official numerical audit references are documented separately",
   "files": {
+    ".github/workflows/synthetic-demo.yml": {
+      "bytes": 1084,
+      "sha256": "c3433ad44094c3f1e9acf9cc7309a6975caed5cd2680615945ab2fe1e789c695"
+    },
     ".gitignore": {
       "bytes": 161,
       "sha256": "e44f36e38d4bcdf436e0f7c396c13b055cc926befceb7cdb06784d43eb4618bc"
     },
     "CHANGELOG.md": {
-      "bytes": 1118,
-      "sha256": "fba6123bde0c7fc03ccbd9271898e35572bf94f70f6f088b589a736622a83219"
+      "bytes": 2040,
+      "sha256": "d9958cb743e7a970117bd0f8b540743764a47f66f03d14bbb89e7c62c0ccf272"
     },
     "DATA_LICENSE.md": {
-      "bytes": 3454,
-      "sha256": "7c1243937d3ea73c8a7ed71aadd59fe2d2b7b077a12bbb559153ea68a6d6a4d7"
+      "bytes": 3697,
+      "sha256": "fe2c7366ecf1e43aa22066f640aa81aa90b8d26e515ba2da2b5fc5f351ed534b"
     },
     "LICENSE": {
-      "bytes": 1301,
-      "sha256": "c9ad5652bd409f575af1cc742c60ef72f0781167ecbec86748b2a5f6e5bce15d"
+      "bytes": 1084,
+      "sha256": "c234c61ebf0798a625a190feb47618feb40a91ffff0e9b7500983edda953255f"
     },
     "PUBLIC_FILES.txt": {
-      "bytes": 2123,
-      "sha256": "fe52a6648ad97b5fff93eb6ee57e70d15d29e16b4f7a2d962eb0b7c1d248fb08"
+      "bytes": 2258,
+      "sha256": "e6430493ab2200e3782aed6d7a2e739f5f7fb68615c3672e2929f05dbc6b2ae2"
     },
     "README.md": {
-      "bytes": 7593,
-      "sha256": "41868c222c76ec5ac4b4c6a94cbe9e87b8f2161974feb6fb6eb329350f87afc6"
+      "bytes": 11893,
+      "sha256": "cc341637824ce768d23e79f10c7b5cf157d6934661537d66a86008c35fadffd9"
     },
     "VERIFICATION.md": {
-      "bytes": 3094,
-      "sha256": "ef4f916abf9bb99975ddd9dba4dcf57d59f4dd777351a68888ce9edd9a989fad"
+      "bytes": 4498,
+      "sha256": "6e699c880af072df39c55dd011554a33c248e3c49ef47dd2f251a82d132eacfe"
     },
     "docs/BASELINE_AUDIT.md": {
       "bytes": 4126,
       "sha256": "e68d9af275a1558d62ed3ba166b568cbb33fc0023d761f11a42d257b92b50612"
     },
     "docs/MAINTAINING.md": {
-      "bytes": 4811,
-      "sha256": "db98c1313d5ddb7c80a4061c62c343ac5bba7dcea724b845412c7c645620e9e6"
+      "bytes": 6106,
+      "sha256": "a2261d8337c218a0a340a4bf103604f13bda3b132646f9c1e657f8ab0e76f77f"
     },
     "docs/METHODOLOGY-v1.md": {
       "bytes": 8542,
@@ -48,6 +52,10 @@
     "docs/VALIDATION_PLAN.md": {
       "bytes": 3602,
       "sha256": "3f7e69e7a06e6ff670c605552d7b04c38a2128a5c44812684b5e5e270ac4f74d"
+    },
+    "docs/WORKFLOW-0.2.0.md": {
+      "bytes": 3540,
+      "sha256": "8807bea505a83eb4851aa96112914e685ebd336e914f9838dd29a3cd4f66bba6"
     },
     "docs/audit/arithmetic-results.json": {
       "bytes": 4898,
@@ -115,31 +123,31 @@
     },
     "examples/synthetic/index.html": {
       "bytes": 47200,
-      "sha256": "d945590cae55d02e254313b5647580bdcbf61af91b6c588f9d53d8708f7f3400"
+      "sha256": "bed4aeb418070aa69cce2bc9b2d85be4032041002364f1c36f9396f42a536d24"
     },
     "examples/synthetic/methodology.json": {
       "bytes": 3452,
       "sha256": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b"
     },
     "examples/synthetic/report.json": {
-      "bytes": 17733,
-      "sha256": "7cf915a3ebb76e37bb1ebc11fb743e5726883db95b594fe5e83697a3ebe55fa2"
+      "bytes": 17763,
+      "sha256": "14c07ddd8a72390e6ae1980478be2c7465219196fb3ce1f2786319d01b679834"
     },
     "open_macro_lab/__init__.py": {
       "bytes": 80,
-      "sha256": "6287a8dc8d7d07eb3a8f98ca0642e035c75d472d0b797a6624477529a4efd18c"
+      "sha256": "cbccd945b22bd667bbc514e5364fd6cd84735dd49941117d2cc53c1c5b8c7a5f"
     },
     "open_macro_lab/__main__.py": {
       "bytes": 48,
       "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
     },
     "open_macro_lab/analysis.py": {
-      "bytes": 8039,
-      "sha256": "90a82dd34c80ac8939f9002e1077d6fb8e6f2f8dfdd6d80c1f6e3477619ed381"
+      "bytes": 8470,
+      "sha256": "bf962cff7e42c0084e8931d1a65e9d6c524cd4175617464c2b62566976c86707"
     },
     "open_macro_lab/cli.py": {
-      "bytes": 4246,
-      "sha256": "20630ff982123e1cc84a1ddf3645f44c0adb8044ec3c715d2aa967e0d88476bb"
+      "bytes": 5438,
+      "sha256": "06f4ae436dc4ab01560476746c4a458c17a1a5d1a96178eaef52e941cd74ec09"
     },
     "open_macro_lab/core.py": {
       "bytes": 9400,
@@ -182,16 +190,24 @@
       "sha256": "d1d38952cf315973164d43719be7d0a947ac840e67c7dd6fdcc514a611821179"
     },
     "open_macro_lab/report.py": {
-      "bytes": 34111,
-      "sha256": "857d3ab08662c38216b66b3c3724f1fa4350f15a40daf8d2e7038b92425c3619"
+      "bytes": 34191,
+      "sha256": "0538f854d2fc69c300c9d4f191839db0875bfee97853de39cb3a271204a10c94"
     },
     "open_macro_lab/store.py": {
       "bytes": 10049,
       "sha256": "a755b46d9a17d34c601a07e35a967b0b3e3631add573f7f808b2993ca6f902a0"
     },
+    "open_macro_lab/workflow.py": {
+      "bytes": 6286,
+      "sha256": "fe356b6a0b0bd896f2eb3541b5023da333d0675f52ed4f5de3a4cf229adc7911"
+    },
     "pyproject.toml": {
-      "bytes": 506,
-      "sha256": "0b285351ce61f59ce8654a6c064263eb655331501779ec909ea54bea00b5e7ac"
+      "bytes": 731,
+      "sha256": "8d4cdf6a380b27cf26fa139d6e729c30cf865e0a2cfa440262dcf1697cb78f8f"
+    },
+    "scripts/check_install.py": {
+      "bytes": 2816,
+      "sha256": "22d123761596e9b245fdf5cc604b938810571c6a38fca555dd7269bae547aefe"
     },
     "scripts/check_interactions.js": {
       "bytes": 5211,
@@ -206,19 +222,23 @@
       "sha256": "e296aeecffa2a09d8cfd92ea92d8c17c9fdc88edf797f8198013a1750877ddfe"
     },
     "scripts/package_release.py": {
-      "bytes": 3125,
-      "sha256": "5b9b7a28d7005674ba7c880be4a24f87b7747dcd5d603da34bf90f94cada1546"
+      "bytes": 3182,
+      "sha256": "f7e2f055bb73aca31eb3f32f8e2a7c7bbc89848bd65ba77d734521a112fc2444"
     },
     "tests/test_research.py": {
       "bytes": 21055,
       "sha256": "83f77dbc2c866fe9278f26063e8fad32c083935bd95668b3839fdf0ed8114383"
+    },
+    "tests/test_workflow.py": {
+      "bytes": 13847,
+      "sha256": "3e29f3be3d797614ffa3d7763f4e2c5f4093cb8b1043ed911de71be2dd935e6c"
     }
   },
   "license": "MIT (source and synthetic material; source-data rights separate)",
   "methodology_version": "1.0.0",
   "package": "open-macro-lab",
-  "package_version": "0.1.0",
-  "reviewed_on": "2026-10-21",
+  "package_version": "0.2.0",
+  "reviewed_on": "2026-10-22",
   "runtime_matches_independently_audited_source": false,
   "schema": 1,
   "target_repository": "amlan-limaye/open-macro-lab"

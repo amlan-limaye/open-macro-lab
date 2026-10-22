@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0 — 2026-10-22
+
+- Added `update`: one explicit capture-to-report command, automatic prior-capture selection, inherited coverage/method, verified immutable issues, and machine-readable results.
+- Added `verify-report`: offline reproduction of payload, CSV, and HTML from attached hash-checked evidence, with a strict source-engine check.
+- Fixed unchanged-capture wording so it does not claim observed differences.
+- Added a clean wheel-install check, CLI/package version reporting, explicit portable output line endings, and installation/recovery documentation. Source packaging excludes generated egg-info, consistent with the existing ignore policy.
+- Kept standard MIT text in LICENSE; moved the existing scope paragraph unchanged into DATA_LICENSE.md. No source-data rights changed.
+- Preserved the singular-day and accessible overflow-cue fixes, recipe 1.0.0, raw fixtures, and the original 0.1.0 release.
+
+
 ## 0.1.0 — 2026-10-21
 
 Public source preparation keeps the audited runtime and methodology unchanged. It adds an explicit file allowlist, hash inventory, portable packaging, a sourced baseline-audit summary, and a synthetic-only bundled report. The original complete real capture and captured FRED webpage markup are not included in the public source distribution.
