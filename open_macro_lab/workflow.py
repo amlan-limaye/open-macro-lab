@@ -10,12 +10,13 @@ from .analysis import analyze, engine_hash
 from .core import ResearchError, canonical, load_method, timestamp, utcnow, validate_method
 from .report import write_report
 from .store import fetch_snapshot, load_snapshot
+from .publication import load_evidence
 
 
 def _evidence(root, identifier):
-    if not isinstance(identifier, str) or not re.fullmatch(r"(?:official|synthetic)-[0-9a-f]{20}", identifier):
+    if not isinstance(identifier, str) or not re.fullmatch(r"(?:official|synthetic|public)-[0-9a-f]{20}", identifier):
         raise ResearchError("Invalid report snapshot identifier")
-    return load_snapshot(root / "evidence" / identifier)
+    return load_evidence(root / "evidence" / identifier)
 
 
 def verify_report(directory):
@@ -45,7 +46,8 @@ def verify_report(directory):
             "comparison": comparison["status"], "observation_date": payload["latest"]["date"],
             "as_of": payload["as_of"], "engine_sha256": payload["engine_sha256"],
             "checks": ["evidence hashes", "methodology", "research payload", "history.csv", "index.html"],
-            "scope": "Offline reproducibility, not source authenticity, historical publication timing, or browser rendering."}
+            "evidence_scope": payload.get("evidence_scope", {}).get("type", "complete_capture"),
+            "scope": payload.get("evidence_scope", {}).get("verification", "Offline reproducibility, not source authenticity, historical publication timing, or browser rendering.")}
 
 
 def update(store="data/live", output="build/issues", start=None, method=None):

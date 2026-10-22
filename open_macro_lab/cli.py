@@ -11,6 +11,7 @@ from .core import ResearchError, load_method, utcnow
 from .report import write_report
 from .store import SERIES, create_snapshot, fetch_snapshot, load_snapshot, select_known_snapshot
 from .workflow import update, verify_report
+from .publication import export_public_report, load_evidence
 
 
 def demo_snapshots(store):
@@ -52,13 +53,19 @@ def parser():
     refresh.add_argument("--output", default="build/issues", help="Parent directory for immutable per-capture reports")
     refresh.add_argument("--start", help="Inherit the last capture's start window; first capture defaults to 2024-01-01")
     refresh.add_argument("--methodology", help="Explicit versioned method; otherwise inherit the last saved method")
+    export = commands.add_parser("export-public", help="Prepare a numerical-only public report from an existing official capture; never uploads")
+    export.add_argument("--snapshot", required=True)
+    export.add_argument("--previous")
+    export.add_argument("--output", required=True, help="New directory; no captured source HTML is copied")
     return p
 
 
 def main(argv=None):
     args = parser().parse_args(argv)
     try:
-        if args.command == "update":
+        if args.command == "export-public":
+            print(export_public_report(args.snapshot, args.output, args.previous))
+        elif args.command == "update":
             result = update(args.store, args.output, args.start, load_method(args.methodology) if args.methodology else None)
             print(json.dumps(result, indent=2))
         elif args.command == "verify-report":
@@ -82,8 +89,8 @@ def main(argv=None):
                     raise ResearchError("--store requires --as-of; availability must be explicit")
                 snapshot = select_known_snapshot(args.store, as_of)
             else:
-                snapshot = load_snapshot(args.snapshot)
-            previous = load_snapshot(args.previous) if args.previous else None
+                snapshot = load_evidence(args.snapshot)
+            previous = load_evidence(args.previous) if args.previous else None
             method = load_method(args.methodology) if args.methodology else None
             payload = analyze(snapshot, previous, as_of, method)
             print(write_report(payload, snapshot, previous, args.output))

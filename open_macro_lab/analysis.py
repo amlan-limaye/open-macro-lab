@@ -96,7 +96,7 @@ def analyze(snapshot, previous=None, as_of=None, method=None):
     else:
         interpretation += "The four-week comparison is unavailable because its exact endpoint is absent or incomplete. "
     interpretation += "These movements describe selected balance-sheet positions; they do not identify a policy shock or establish an asset-price forecast."
-    return serializable({"schema": 1, "product": "Open Macro Lab", "provisional_name": True,
+    result = serializable({"schema": 1, "product": "Open Macro Lab", "provisional_name": True,
                          "package_version": __version__,
                          "snapshot_id": snapshot.id, "kind": snapshot.manifest["kind"],
                          "captured_at": snapshot.manifest["captured_at"], "as_of": as_of,
@@ -109,3 +109,8 @@ def analyze(snapshot, previous=None, as_of=None, method=None):
                          "confidence": {"arithmetic": "Exact decimal accounting, checked input contracts and matching observation dates.",
                                         "economic": "Descriptive proxy with incomplete balance-sheet coverage; no causal or predictive confidence claim.",
                                         "temporal": "Current-vintage monitoring. Archive-known availability only, beginning with saved captures; no historical PIT backtest."}})
+    from .publication import public_scope
+    scope = public_scope(snapshot, previous)
+    if scope:
+        result["evidence_scope"] = scope
+    return result

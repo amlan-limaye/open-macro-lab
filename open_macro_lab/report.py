@@ -137,13 +137,24 @@ updateScrollHints();
 def render(payload):
     p, latest, method = payload, payload["latest"], payload["methodology"]
     synthetic = p["kind"] == "synthetic"
+    public = p.get("evidence_scope", {}).get("type") == "numerical_export"
+    units_note = "Charts and headlines in USD billions; trace inputs in USD millions" if public else "All displayed amounts in USD billions"
     four = p["windows"]["4"]
     badge = "Synthetic demonstration" if synthetic else "Official public data · saved snapshot"
     pieces = [f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; script-src \'unsafe-inline\'; img-src data:; base-uri \'none\'; form-action \'none\'"><meta name="description" content="Two executable US liquidity research recipes with inspectable sources, calculations, and snapshot changes."><title>Open Macro Lab · {esc(latest["date"])} · {"Synthetic demo" if synthetic else "Research snapshot"}</title><style>{CSS}</style></head><body><a class="skip" href="#reading">Skip to research</a>',
               '<header class="top"><div class="wrap masthead"><div class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div><strong>Open Macro Lab</strong><small>Executable research · provisional name</small></div></div><nav aria-label="Report navigation"><a href="#reading">Reading</a><a href="#drivers">Drivers</a><a href="#recipes">Recipes</a><a href="#changes">Changes</a><a href="#evidence">Evidence</a></nav></div></header><main class="wrap">',
-              f'<div class="intro"><div class="issuebar"><span class="eyebrow">Research note 001 / United States</span><span class="badge {"demo" if synthetic else ""}">{badge}</span></div><h1>What changed in the Fed’s<br>balance sheet?</h1><p class="lede">A decomposable US liquidity proxy, checked against actual reserve balances. Two small recipes, with an inspectable path from source to conclusion.</p><p class="meta">Observation: <strong>{esc(latest["date"])}</strong> · Captured: {esc(p["captured_at"])} · Methodology {esc(method["version"])} · All displayed amounts in USD billions</p></div>']
+              f'<div class="intro"><div class="issuebar"><span class="eyebrow">Research note 001 / United States</span><span class="badge {"demo" if synthetic else ""}">{badge}</span></div><h1>What changed in the Fed’s<br>balance sheet?</h1><p class="lede">A decomposable US liquidity proxy, checked against actual reserve balances. Two small recipes, with an inspectable path from source to conclusion.</p><p class="meta">Observation: <strong>{esc(latest["date"])}</strong> · Captured: {esc(p["captured_at"])} · Methodology {esc(method["version"])} · {units_note}</p></div>']
     if synthetic:
         pieces.append('<div class="notice"><strong>SYNTHETIC DATA — not a market reading.</strong><p>The numbers, capture times, and revisions in this example were deliberately invented to demonstrate reproducibility and change attribution. They do not describe actual official revisions.</p></div>')
+    if public:
+        baseline = p["comparison"]["status"] == "first_snapshot"
+        pieces.append('<div class="notice"><h2>Dated official '+('baseline' if baseline else 'comparison')+' · '+esc(latest["date"])
+                      +'</h2><p style="margin-top:12px"><strong>Not a live feed.</strong> Observations through '+esc(latest["date"])
+                      +'; original capture completed '+esc(p["captured_at"])+'. Numerical export created '
+                      +esc(p["evidence_scope"]["exports"][0]["exported_at"])+'. Exporting these saved numbers is not a new data release.</p>'
+                      +'<p>Current-vintage history from that capture. Historical publication timestamps are unknown. '
+                      +('This first capture supplies no observed revision comparison. ' if baseline else 'Changes refer only to the two saved captures. ')
+                      +'<a href="history.csv" download>Download all numerical results</a>.</p></div>')
     if p["warnings"]:
         pieces.append('<div class="notice"><strong>Data quality notes</strong><ul>' + ''.join('<li>'+esc(w)+'</li>' for w in p["warnings"]) + '</ul></div>')
     metrics = [("Selected liquidity proxy", latest["liquidity"], False, "Assets − Treasury account − total reverse repos"),
@@ -151,6 +162,25 @@ def render(payload):
                ("Observed reserve balances", latest["reserves"], False, "Wednesday levels · WRBWFRBL"),
                ("Proxy–reserve gap", latest["gap"], False, "Other balance-sheet items remain in the proxy")]
     pieces.append('<div class="metrics">' + ''.join(f'<div class="metric"><div class="metric-label">{esc(label)}</div><div class="value">{number(value,signed)}</div><div class="unit">USD bn</div><small>{esc(note)}</small></div>' for label,value,signed,note in metrics) + '</div>')
+    if public:
+        pieces.append('<details open><summary>Calculation trace for '+esc(latest['date'])+' · declared inputs in USD millions</summary>'
+                      +scroll_open('Latest official input values', 'table')+'<table><thead><tr><th>Input</th><th class="num">Native USD millions</th><th>Retrieved at UTC</th></tr></thead><tbody>')
+        for source in p['sources']:
+            pieces.append('<tr><td>'+esc(source['series'])+' · '+esc(source['label'])+'</td><td class="num">'
+                          +number(latest['inputs'][source['series']])+'</td><td>'+esc(source['retrieved_at'])+'</td></tr>')
+        pieces.append('</tbody></table></div>')
+        for key in ('liquidity', 'reserves', 'gap'):
+            terms=[]
+            for series, coefficient in method['recipes'][key]['coefficients'].items():
+                weight=Decimal(coefficient)
+                sign='−' if weight < 0 else '+'
+                magnitude='' if abs(weight)==1 else str(abs(weight))+' × '
+                terms.append(sign+' '+magnitude+number(latest['inputs'][series]))
+            expression=' '.join(terms).lstrip('+ ')
+            pieces.append('<p class="formula">'+esc(method['recipes'][key]['name'])+': ('+esc(expression)
+                          +') / 1,000 = '+number(latest[key])+' USD bn</p>')
+        pieces.append('<p class="small">Open Macro Lab calculations using the executed method '+esc(method['version'])+' shown below. '
+                      'These accounting results do not establish economic causality or a trading forecast.</p></details>')
     pieces.append('<section id="reading"><div class="section-head"><div><div class="section-num">01 / Current reading</div><h2>Selected liquidity and reserve balances</h2></div><span class="small">Current-vintage history · no historical backtest</span></div><div class="grid"><div class="panel"><div class="legend"><span>Selected liquidity proxy</span><span class="reserve">Observed reserves</span></div><div class="rangebar" aria-label="History range"><button type="button" data-range="13" aria-pressed="false">13 weeks</button><button type="button" data-range="52" aria-pressed="true">52 weeks</button><button type="button" data-range="all" aria-pressed="false">All history</button></div>')
     for n in ("13", "52", "all"):
         rows = p["rows"] if n == "all" else p["rows"][-int(n):]
@@ -189,6 +219,13 @@ def render(payload):
     pieces.append('<section id="evidence"><div class="section-head"><div><div class="section-num">05 / Evidence and reproducibility</div><h2>Inspect the publication</h2></div><a href="report.json" download>Full research payload ↗</a></div><div class="audit">')
     for label,key in (("Calculation confidence","arithmetic"),("Economic confidence","economic"),("Availability confidence","temporal")):
         pieces.append('<div class="panel"><h3>'+label+'</h3><p>'+esc(p["confidence"][key])+'</p></div>')
+    if public:
+        pieces.append('</div><div class="panel" style="margin-top:24px"><h3>Public numerical verification scope</h3><p>'
+                      +esc(p['evidence_scope']['verification'])+'</p><p class="small">The public export contains only the four selected numerical series, '
+                      'attribution, actual retrieval times and the executed method. It is a separate artifact, not the private capture directory. '
+                      'Its reference to the original manifest is a hash reference, not a digital signature.</p>'
+                      '<p class="small">From this report directory with package '+esc(p['package_version'])+' installed:</p>'
+                      '<div class="code">open-macro-lab verify-report .</div>')
     pieces.append('</div><div class="panel" style="margin-top:24px"><h3>Input ledger</h3><p class="small">Age is measured against '+esc(p["as_of"])+'. Latest complete observation age: '+str(p["observation_age_days"])+ (' day' if p["observation_age_days"] == 1 else ' days')+'. Status: '+esc(p["status"].replace('_',' '))+'. This saved report does not refresh itself.</p>'+scroll_open('Source input ledger', 'table')+'<table class="sources"><thead><tr><th>Input / original source</th><th>Observation dates</th><th>Capture and publication</th><th>Raw evidence</th></tr></thead><tbody>')
     for source in p["sources"]:
         pieces.append(f'<tr><td><a href="https://fred.stlouisfed.org/series/{esc(source["series"])}">{esc(source["series"])}</a><br>{esc(source["label"])}<br>Board of Governors · H.4.1, via FRED<br><span class="small">USD millions · Wednesday level · NSA</span></td><td>{esc(source["first_observation"])} → {esc(source["last_observation"])}<br>Latest nonmissing: {esc(source["latest_valid_observation"])}<br>{source["observations"]} rows; {source["missing_values"]} explicit missing</td><td>Retrieved {esc(source["retrieved_at"])}<br><strong>Historical publication dates: unknown</strong><br>HTTP date is not a release timestamp.</td><td><a href="{esc(source["evidence_path"])}" download>Original CSV</a><br><span class="hash">SHA-256 {esc(source["sha256"])}</span></td></tr>')
@@ -209,10 +246,18 @@ def write_report(payload, snapshot, previous, output):
         if snap:
             destination=evidence / snap.id
             if not destination.exists():
-                shutil.copytree(snap.path, destination)
+                if snap.manifest.get('artifact') == 'open-macro-lab-numerical-export':
+                    from .publication import load_public_snapshot
+                    load_public_snapshot(snap.path)
+                    for name in ('manifest.json', 'manifest.sha256', *snap.manifest['files']):
+                        target=destination/name
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copyfile(snap.path/name, target)
+                else:
+                    shutil.copytree(snap.path, destination)
             else:
-                from .store import load_snapshot
-                if load_snapshot(destination).manifest != snap.manifest:
+                from .publication import load_evidence
+                if load_evidence(destination).manifest != snap.manifest:
                     raise ValueError("Existing evidence differs")
     (root / "report.json").write_bytes(canonical(payload))
     (root / "methodology.json").write_bytes(canonical(payload["methodology"]))
