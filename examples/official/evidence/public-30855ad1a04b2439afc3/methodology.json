@@ -1,0 +1,84 @@
+{
+  "alignment": "Exact Wednesday dates; no resampling, interpolation, or filling",
+  "interpretation": "Recipe 1 decomposes selected balance-sheet positions; recipe 2 compares them with observed reserves and measures the residual gap. These are accounting descriptions, not causal estimates or trading signals.",
+  "limitations": [
+    "US Federal Reserve balance sheet only; not global liquidity, broad money, private credit, or tradable cash.",
+    "Total reverse repos include foreign official and international accounts and other reverse repos. This is not the popular assets-minus-TGA-minus-ON-RRP formula.",
+    "The gap includes omitted liabilities and capital; it is not an unexplained statistical error or a complete reconciliation of every H.4.1 line.",
+    "Current-vintage history is unsuitable for a historical point-in-time backtest. Observation dates do not establish publication or availability dates.",
+    "Per-observation historical publication dates and vintages are not retrieved. Snapshot comparisons establish changes seen between captures, not the time or reason an official revision occurred.",
+    "The 10-calendar-day stale threshold is an operational warning, not a release-calendar forecast. Same-day captures can straddle an upstream update.",
+    "A rising proxy does not establish easier financial conditions or predictive market returns. No live trading or investment recommendation."
+  ],
+  "output_unit": "USD billions",
+  "recipe_count": 2,
+  "recipes": {
+    "gap": {
+      "coefficients": {
+        "WALCL": "1",
+        "WDTGAL": "-1",
+        "WLRRAL": "-1",
+        "WRBWFRBL": "-1"
+      },
+      "formula": "G = L − R",
+      "name": "Proxy–reserve gap"
+    },
+    "liquidity": {
+      "coefficients": {
+        "WALCL": "1",
+        "WDTGAL": "-1",
+        "WLRRAL": "-1"
+      },
+      "formula": "L = (WALCL − WDTGAL − WLRRAL) / 1000",
+      "name": "Selected balance-sheet liquidity"
+    },
+    "reserves": {
+      "coefficients": {
+        "WRBWFRBL": "1"
+      },
+      "formula": "R = WRBWFRBL / 1000",
+      "name": "Observed reserve balances"
+    }
+  },
+  "series": {
+    "WALCL": {
+      "basis": "Wednesday level",
+      "currency": "USD",
+      "frequency": "weekly",
+      "label": "Fed assets",
+      "seasonal_adjustment": "NSA",
+      "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level",
+      "unit": "USD millions"
+    },
+    "WDTGAL": {
+      "basis": "Wednesday level",
+      "currency": "USD",
+      "frequency": "weekly",
+      "label": "Treasury general account",
+      "seasonal_adjustment": "NSA",
+      "title_fragment": "U.S. Treasury, General Account: Wednesday Level",
+      "unit": "USD millions"
+    },
+    "WLRRAL": {
+      "basis": "Wednesday level",
+      "currency": "USD",
+      "frequency": "weekly",
+      "label": "Total reverse repos",
+      "seasonal_adjustment": "NSA",
+      "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level",
+      "unit": "USD millions"
+    },
+    "WRBWFRBL": {
+      "basis": "Wednesday level",
+      "currency": "USD",
+      "frequency": "weekly",
+      "label": "Reserve balances",
+      "seasonal_adjustment": "NSA",
+      "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level",
+      "unit": "USD millions"
+    }
+  },
+  "stale_after_days": 10,
+  "title": "US selected balance-sheet liquidity and reserve cross-check",
+  "version": "1.0.0"
+}

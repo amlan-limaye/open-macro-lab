@@ -1,0 +1,122 @@
+{
+  "artifact": "open-macro-lab-numerical-export",
+  "availability_policy": "captured_at is the original archive retrieval completion; exported_at is this numerical export's creation, not a new observation or historical publication date.",
+  "captured_at": "2026-10-21T11:37:11+00:00",
+  "exported_at": "2026-10-22T10:32:28+00:00",
+  "files": {
+    "methodology.json": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b",
+    "raw/WALCL.csv": "119f267b9d9583ac975b74beff20e6868e6e3b08ef6d45ccbf27a6e261418b5a",
+    "raw/WDTGAL.csv": "0a6fbece75a0a586238dd96601c1de558a3349de64fef8887a04c85fb4412f61",
+    "raw/WLRRAL.csv": "45b94a0115221a235c60296a1a148838b45b91099b5e02a924677fc2b66a317a",
+    "raw/WRBWFRBL.csv": "f2bc1e632815f4047dec771c6654e12da9865a863c7a926d3a91257fc54643d6"
+  },
+  "kind": "official",
+  "methodology_sha256": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b",
+  "methodology_version": "1.0.0",
+  "omitted": [
+    "Captured source HTML and site assets",
+    "Private capture directory and original full manifest"
+  ],
+  "original_manifest_sha256": "1c1dd1e38793565f2b842aacde8d77e94457734102959c16fa48339359a71f61",
+  "original_snapshot_id": "official-1c1dd1e38793565f2b84",
+  "requested_start": "2024-01-01",
+  "schema": 1,
+  "sources": {
+    "WALCL": {
+      "bytes": 2797,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Fed assets",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WALCL.csv",
+      "first_observation": "2024-01-03",
+      "last_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:03+00:00",
+      "sha256": "119f267b9d9583ac975b74beff20e6868e6e3b08ef6d45ccbf27a6e261418b5a",
+      "source_page": "https://fred.stlouisfed.org/series/WALCL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WALCL&cosd=2024-01-01"
+    },
+    "WDTGAL": {
+      "bytes": 2653,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Treasury general account",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "U.S. Treasury, General Account: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WDTGAL.csv",
+      "first_observation": "2024-01-03",
+      "last_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:07+00:00",
+      "sha256": "0a6fbece75a0a586238dd96601c1de558a3349de64fef8887a04c85fb4412f61",
+      "source_page": "https://fred.stlouisfed.org/series/WDTGAL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WDTGAL&cosd=2024-01-01"
+    },
+    "WLRRAL": {
+      "bytes": 2654,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Total reverse repos",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WLRRAL.csv",
+      "first_observation": "2024-01-03",
+      "last_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:09+00:00",
+      "sha256": "45b94a0115221a235c60296a1a148838b45b91099b5e02a924677fc2b66a317a",
+      "source_page": "https://fred.stlouisfed.org/series/WLRRAL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WLRRAL&cosd=2024-01-01"
+    },
+    "WRBWFRBL": {
+      "bytes": 2800,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Reserve balances",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "file": "raw/WRBWFRBL.csv",
+      "first_observation": "2024-01-03",
+      "last_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:11+00:00",
+      "sha256": "f2bc1e632815f4047dec771c6654e12da9865a863c7a926d3a91257fc54643d6",
+      "source_page": "https://fred.stlouisfed.org/series/WRBWFRBL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WRBWFRBL&cosd=2024-01-01"
+    }
+  }
+}
