@@ -15,10 +15,10 @@ def digest(raw):
 
 def main():
     root = Path(__file__).resolve().parents[1]
-    allowlist = (root / "PUBLIC_FILES.txt").read_text().splitlines()
+    allowlist = (root / "PUBLIC_FILES.txt").read_text(encoding="utf-8").splitlines()
     if len(allowlist) != len(set(allowlist)) or allowlist != sorted(allowlist):
         raise SystemExit("The public file list must be unique and sorted")
-    manifest = json.loads((root / "PUBLIC_MANIFEST.json").read_text())
+    manifest = json.loads((root / "PUBLIC_MANIFEST.json").read_text(encoding="utf-8"))
     expected = set(allowlist) - {"PUBLIC_MANIFEST.json"}
     if set(manifest["files"]) != expected:
         raise SystemExit("Manifest/file-list mismatch")

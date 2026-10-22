@@ -23,8 +23,8 @@ class Audit(HTMLParser):
 
 def check(path):
     folder=Path(path)
-    text=(folder/'index.html').read_text()
-    p=json.loads((folder/'report.json').read_text())
+    text=(folder/'index.html').read_text(encoding="utf-8")
+    p=json.loads((folder/'report.json').read_text(encoding="utf-8"))
     doc=Audit();doc.feed(text)
     assert not doc.resources,doc.resources
     assert len(doc.ids)==len(set(doc.ids)),'Duplicate IDs'
