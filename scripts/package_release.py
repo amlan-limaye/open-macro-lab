@@ -41,7 +41,7 @@ def main():
     unexpected = []
     for path in root.rglob("*"):
         rel = path.relative_to(root)
-        if set(rel.parts) & ignored_dirs:
+        if set(rel.parts) & ignored_dirs or any(part.endswith('.egg-info') for part in rel.parts):
             continue
         if path.is_file() and rel.as_posix() not in payload:
             unexpected.append(rel.as_posix())
