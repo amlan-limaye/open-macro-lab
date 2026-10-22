@@ -15,7 +15,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          # Python 3.9 is available on 24.04, not the moving 26.04 latest image.
+          - os: ubuntu-24.04
             python: "3.9"
           - os: windows-latest
             python: "3.13"
