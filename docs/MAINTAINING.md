@@ -4,10 +4,13 @@ The minimum maintenance task is small: preserve four public series contracts, on
 
 ## Routine update
 
-1. Run the offline tests and verify the last good snapshot.
-2. Run `fetch` with the same `--start` window. It fetches official public FRED CSVs and metadata with ordinary certificate verification. Do not add credentials or turn TLS checking off to make an endpoint work.
-3. Build with the printed new snapshot path and explicit `--previous` last good path. Check age, latest common date, missing data, and the archive change ledger before interpreting a change.
-4. Keep the raw inputs and method alongside each saved issue. For a publication, obtain separate authorization; this CLI has no publish/send/deploy action.
+1. Run the offline tests and verify the last good snapshot or complete issue.
+2. Run `python3 -m open_macro_lab update --store data/live --output build/issues`. It inherits the latest known capture's retrieval window and method unless you explicitly override them.
+3. Inspect the returned JSON and open its report path. Check the observation date, warnings, unchanged/new/revised counts, and interpretation. The first capture remains a baseline.
+4. Run `python3 -m open_macro_lab verify-report REPORT_DIRECTORY` before transferring a report folder. Keep the attached evidence and the package version recorded in `report.json`.
+5. Preserve old issues and releases. The update command writes one verified issue per capture ID and never replaces an old issue. It has no publish/send/deploy action.
+
+For exact control, the separate `fetch`, `verify`, and `report --previous` commands remain available. An incomplete older capture does not prevent acquisition of a new complete one; its attribution bridge may be unavailable. Corrupt archive evidence stops the update before network access. If a capture succeeds but report writing fails, the snapshot is retained and the error identifies its path. Rerunning can recover the issue. If an existing issue fails verification or uses a different comparison, select a new output parent; do not overwrite its evidence.
 
 There is no background job, hidden scheduler, auto-refresh, database service, user tracking, or market execution. Running the tool daily is allowed but often produces unchanged weekly observations. A daily reading should explain unchanged evidence instead of manufacturing a daily signal.
 
@@ -19,7 +22,7 @@ Metadata checks assert the selected title and unit/cadence markers in the captur
 
 ## Methodology or engine changes
 
-Preserve `v1.json`. Copy to a new version, explain the economic reason in a corresponding method document, revise coefficients and formula text together, bump the version, and add independent reference cases. Pass `--methodology` while building a comparison. Input identity/unit/basis changes are intentionally refused by this generic override; they need an engine and archive-contract change. All source changes should be versioned, and old package releases retained with old issues. The source hash in report JSON identifies the Python implementation but does not bundle every historical executable version automatically.
+Preserve `v1.json`. Copy to a new version, explain the economic reason in a corresponding method document, revise coefficients and formula text together, bump the version, and add independent reference cases. Pass `--methodology` while building a comparison. Input identity/unit/basis changes are intentionally refused by this generic override; they need an engine and archive-contract change. All source changes should be versioned, and old package releases retained with old issues. The package version and source hash in report JSON identify the Python implementation but do not bundle every historical executable version automatically. `verify-report` deliberately refuses a different source hash; retain the original release or rebuild from evidence in a new directory. The verifier does not execute the report, contact the source, or certify source authenticity.
 
 Snapshots embed the method current at ingestion. For subsequent captures with a revised definition, use `fetch --methodology PATH` so it remains attached to the evidence. An analysis-only experiment can use `report --methodology PATH`, but the v1 CLI compares against the **method embedded in the previous snapshot**, not an arbitrary earlier report. This boundary is explicit; do not claim that it automatically compares every successive editorial issue.
 
@@ -31,7 +34,9 @@ This is application-level append-only storage with tamper detection, not privile
 
 ## Honest review boundary
 
-Automated checks cover calculations, units, currencies, frequency/basis, missingness, stale age, no-lookahead, revision classes, methodology effects, evidence integrity, links, and report content. A responsive stylesheet is included, but actual browser rendering, narrow-screen visual inspection, print rendering, and click behavior in a real browser remain pending. See `VALIDATION_PLAN.md` for the scoped later review; content checks alone are not visual verification.
+Automated checks cover calculations, source contracts, missingness, stale age, no-lookahead, revision classes, methodology effects, evidence integrity, complete report reproduction, and report interactions in a Node mock DOM. Version 0.2.0 also has a repeatable clean-wheel installation check. See `VERIFICATION.md` for observed results and distinctions between simulated acquisition, saved real evidence, and browser verification.
+
+The publisher reported desktop/narrow-screen verification of the prior visual fixes at source commit `72c0652ce84ebdda91e2b921d733e36e2993f212`. This workflow pass preserves those rendering fixes. It does not claim a new browser or screen-reader review. The scheduled real-release comparison remains separate from tests against the saved baseline.
 
 ## Deliberately out of scope
 
