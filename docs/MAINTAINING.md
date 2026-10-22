@@ -16,6 +16,10 @@ There is no background job, hidden scheduler, auto-refresh, database service, us
 
 ## Source change or acquisition failure
 
+For an authorized public issue, use `export-public --snapshot NEW_ACTUAL_CAPTURE --previous PREVIOUS_ACTUAL_CAPTURE --output NEW_PUBLIC_DIRECTORY`. Omit `--previous` for the first baseline. This makes an explicit numerical projection; do not recursively publish a private capture or manually remove metadata files from its original format. Verify the exported report using the same package version, then inspect changed cells and all dates. See [public evidence](PUBLIC_EVIDENCE.md) for the narrower verification scope.
+
+To refresh the demonstrations, preserve the old issue and prepare the new public report first. Deliberately update `SITE_FILES.json`, the source allowlist, and all reviewed manifest hashes. Run the full suite, both report verifiers, independent arithmetic, clean installed-package reproduction, and `stage_site.py` before the publisher dispatches the manual Pages workflow with the full reviewed source commit SHA. Only the explicit staged file set is deployed. Test CI has read-only permissions; existing Pages write permissions are confined to the separate deployment job. A future comparison must use actual saved observations; exporting an old capture again is not a new data release.
+
 An HTTP error, metadata mismatch, malformed CSV, or invalid value aborts acquisition. Previously saved snapshots remain available for offline reports. Do not relabel that old issue as fresh; build with `--as-of now` to expose age. Inspect the official series page and H.4.1 release. If the endpoint or title changed, update the narrow adapter, add a meaningful regression test, and record the version change. Do not silently switch from Wednesday levels to weekly averages or from total RRP to overnight RRP.
 
 Metadata checks assert the selected title and unit/cadence markers in the captured source page. This catches common endpoint/series drift, but is not a machine-readable official unit schema and cannot detect every upstream methodology change. Review any material H.4.1 definition notice manually before continuing a series.
@@ -34,7 +38,7 @@ This is application-level append-only storage with tamper detection, not privile
 
 ## Honest review boundary
 
-Automated checks cover calculations, source contracts, missingness, stale age, no-lookahead, revision classes, methodology effects, evidence integrity, complete report reproduction, and report interactions in a Node mock DOM. Version 0.2.0 also has a repeatable clean-wheel installation check. See `VERIFICATION.md` for observed results and distinctions between simulated acquisition, saved real evidence, and browser verification.
+Automated checks cover calculations, source contracts, missingness, stale age, no-lookahead, revision classes, methodology effects, evidence integrity, report reproduction, and report interactions in a Node mock DOM. The clean-wheel installation check also reproduces the public numerical report outside the checkout. See `VERIFICATION.md` for observed results and distinctions between simulated acquisition, saved real evidence, and browser verification.
 
 The publisher reported desktop/narrow-screen verification of the prior visual fixes at source commit `72c0652ce84ebdda91e2b921d733e36e2993f212`. This workflow pass preserves those rendering fixes. It does not claim a new browser or screen-reader review. The scheduled real-release comparison remains separate from tests against the saved baseline.
 

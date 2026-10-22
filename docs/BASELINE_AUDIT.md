@@ -4,7 +4,7 @@ An independent computational review found no material arithmetic error or unsupp
 
 The separate audit used integer subtraction and rational equality without importing the project's calculations as its arithmetic oracle. It reproduced all 146 liquidity, reserve, and gap values in JSON, CSV, and the static HTML history table. It verified the manifest and nine referenced file hashes. **Twenty official input cells**—the latest five dates across four series—were independently checked against the four official FRED pages; the latest date was also checked against the [original October 15 H.4.1 release](https://www.federalreserve.gov/releases/h41/20261015/). The older history was recomputed from the saved raw capture, not individually verified against every original historical release.
 
-The [arithmetic audit results](audit/arithmetic-results.json) preserve the numerical evidence and scope. The original full raw snapshot is not bundled in this public release. These results do not claim to be a newly captured or complete historical vintage archive.
+The [arithmetic audit results](audit/arithmetic-results.json) preserve the numerical evidence and scope. Version 0.3.0 bundles the four permitted numerical series as a distinct public export; the original full snapshot and captured source webpages remain private. The [public evidence guide](PUBLIC_EVIDENCE.md) explains what a reader can reproduce without them. These results do not claim to be a newly captured or complete historical vintage archive.
 
 ## Official reference points
 
@@ -28,4 +28,4 @@ October 14 is the observation date; October 15 is the dated Board release; Octob
 
 The separate synthetic pair reconciles **5,925 + 2 prior-data effect + 13 new-endpoint effect + 0 method effect = 5,940bn**. Four new cells and two changed prior cells are intentionally invented. A separate audit fixture tested a nonzero methodology effect; it was an artificial test, not an economic recommendation.
 
-The public release retains the audited Python runtime and frozen methodology bytes. Public documentation, packaging, and example selection are release preparation. Rendered visual inspection was outside the audit's scope and remains pending; matching static HTML values is a content check only.
+This audit describes the original implementation and capture. Later package releases retain the frozen methodology and baseline calculations but may change workflow, evidence, or rendering code; consult the current [verification record](../VERIFICATION.md). Rendered visual inspection was outside this arithmetic audit's scope; matching static HTML values is a content check only.
