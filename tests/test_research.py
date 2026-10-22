@@ -309,7 +309,7 @@ class ReportAndCLITests(SnapshotCase):
     def test_self_contained_report_all_evidence_links_resolve(self):
         output=self.root/'report'
         file=write_report(analyze(self.new,self.old),self.new,self.old,output)
-        doc=Document();doc.feed(file.read_text())
+        doc=Document();doc.feed(file.read_text(encoding="utf-8"))
         self.assertEqual(len(doc.ids),len(set(doc.ids)))
         self.assertEqual(doc.external_resources,[])
         for link in doc.links:

@@ -65,7 +65,7 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(fetch.call_args.args[1], '2025-01-01')
         self.assertEqual(result['previous'], first['snapshot'])
         self.assertEqual(result['change_counts'], {'new_observation': 4, 'revised_prior_value': 2})
-        p = json.loads(Path(result['report']).with_name('report.json').read_text())
+        p = json.loads(Path(result['report']).with_name('report.json').read_text(encoding="utf-8"))
         self.assertEqual(p['comparison']['bridge']['recipes']['liquidity']['after'], '5940')
         self.assertEqual(p['comparison']['bridge']['recipes']['liquidity']['prior_data_effect'], '2')
         self.assertEqual(Path(first['report']).read_bytes(), before)
@@ -157,7 +157,7 @@ class WorkflowTests(unittest.TestCase):
                         kind='official', start='2025-01-01')
         result, _ = self.run_update()
         self.assertEqual(result['observation_date'], '2025-04-23')
-        payload = json.loads(Path(result['report']).with_name('report.json').read_text())
+        payload = json.loads(Path(result['report']).with_name('report.json').read_text(encoding="utf-8"))
         self.assertIsNone(payload['comparison']['bridge'])
 
     def test_issue_serialization_has_explicit_portable_line_endings(self):
@@ -179,7 +179,7 @@ class WorkflowTests(unittest.TestCase):
 
     def test_report_payload_tampering_is_detected(self):
         folder = self.report(); file = folder / 'report.json'
-        payload = json.loads(file.read_text()); payload['latest']['liquidity'] = '99999'
+        payload = json.loads(file.read_text(encoding="utf-8")); payload['latest']['liquidity'] = '99999'
         file.write_text(json.dumps(payload))
         with self.assertRaisesRegex(ResearchError, 'payload does not reproduce'):
             verify_report(folder)
@@ -202,14 +202,14 @@ class WorkflowTests(unittest.TestCase):
 
     def test_engine_mismatch_explains_how_to_reproduce_old_report(self):
         folder = self.report(); file = folder / 'report.json'
-        payload = json.loads(file.read_text()); payload['engine_sha256'] = '0' * 64
+        payload = json.loads(file.read_text(encoding="utf-8")); payload['engine_sha256'] = '0' * 64
         file.write_text(json.dumps(payload))
         with self.assertRaisesRegex(ResearchError, 'original package version'):
             verify_report(folder)
 
     def test_report_identifiers_cannot_escape_evidence_directory(self):
         folder = self.report(); file = folder / 'report.json'
-        payload = json.loads(file.read_text()); payload['snapshot_id'] = '../../outside'
+        payload = json.loads(file.read_text(encoding="utf-8")); payload['snapshot_id'] = '../../outside'
         file.write_text(json.dumps(payload))
         with self.assertRaisesRegex(ResearchError, 'Invalid report snapshot'):
             verify_report(folder)
