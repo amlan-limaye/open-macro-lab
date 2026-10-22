@@ -99,7 +99,7 @@
     "economic": "Descriptive proxy with incomplete balance-sheet coverage; no causal or predictive confidence claim.",
     "temporal": "Current-vintage monitoring. Archive-known availability only, beginning with saved captures; no historical PIT backtest."
   },
-  "engine_sha256": "a4abd3b7023dc5ffa123afa062d5c7afe45d6f3f8dd698131c51b2b0431c4ff9",
+  "engine_sha256": "dd34e44dfeab3a8199d7626bd586859da31ce77e32c1c0b45f9c8126661cfb2b",
   "interpretation": "The latest complete Wednesday is 2025-04-23. Over four calendar weeks the selected liquidity proxy rose by 60 USD bn. Fed assets had the largest absolute accounting contribution (40 USD bn). Observed reserves changed by 32 USD bn, while the proxy–reserve gap changed by 28 USD bn. These movements describe selected balance-sheet positions; they do not identify a policy shock or establish an asset-price forecast.",
   "kind": "synthetic",
   "latest": {
@@ -201,7 +201,7 @@
   "methodology_sha256": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b",
   "missing_dates": [],
   "observation_age_days": 1,
-  "package_version": "0.2.0",
+  "package_version": "0.3.0",
   "product": "Open Macro Lab",
   "provisional_name": true,
   "rows": [
