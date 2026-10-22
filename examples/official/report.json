@@ -1,0 +1,2075 @@
+{
+  "as_of": "2026-10-21T11:37:11+00:00",
+  "captured_at": "2026-10-21T11:37:11+00:00",
+  "comparison": {
+    "bridge": null,
+    "counts": {},
+    "events": [],
+    "message": "First saved snapshot: no prior capture to test for revisions. This is a baseline, not evidence of unchanged history.",
+    "status": "first_snapshot"
+  },
+  "confidence": {
+    "arithmetic": "Exact decimal accounting, checked input contracts and matching observation dates.",
+    "economic": "Descriptive proxy with incomplete balance-sheet coverage; no causal or predictive confidence claim.",
+    "temporal": "Current-vintage monitoring. Archive-known availability only, beginning with saved captures; no historical PIT backtest."
+  },
+  "engine_sha256": "dd34e44dfeab3a8199d7626bd586859da31ce77e32c1c0b45f9c8126661cfb2b",
+  "evidence_scope": {
+    "exports": [
+      {
+        "exported_at": "2026-10-22T10:32:28+00:00",
+        "id": "public-30855ad1a04b2439afc3",
+        "original_manifest_sha256": "1c1dd1e38793565f2b842aacde8d77e94457734102959c16fa48339359a71f61",
+        "original_snapshot_id": "official-1c1dd1e38793565f2b84"
+      }
+    ],
+    "omitted": [
+      "Captured source HTML and site assets",
+      "Private capture directory and original full manifest"
+    ],
+    "type": "numerical_export",
+    "verification": "Published numerical input hashes, declared contracts, calculations, CSV and HTML output. Original source-page metadata checks cannot be repeated because those webpages are omitted. Neither signed source authenticity nor historical release/revision times are verified."
+  },
+  "interpretation": "The latest complete Wednesday is 2026-10-14. Over four calendar weeks the selected liquidity proxy rose by 111.980 USD bn. Treasury general account had the largest absolute accounting contribution (105.885 USD bn). Observed reserves changed by 109.318 USD bn, while the proxy–reserve gap changed by 2.662 USD bn. These movements describe selected balance-sheet positions; they do not identify a policy shock or establish an asset-price forecast.",
+  "kind": "official",
+  "latest": {
+    "date": "2026-10-14",
+    "gap": "2512.163",
+    "inputs": {
+      "WALCL": "6755639",
+      "WDTGAL": "885823",
+      "WLRRAL": "326799",
+      "WRBWFRBL": "3030854"
+    },
+    "liquidity": "5543.017",
+    "reserves": "3030.854"
+  },
+  "methodology": {
+    "alignment": "Exact Wednesday dates; no resampling, interpolation, or filling",
+    "interpretation": "Recipe 1 decomposes selected balance-sheet positions; recipe 2 compares them with observed reserves and measures the residual gap. These are accounting descriptions, not causal estimates or trading signals.",
+    "limitations": [
+      "US Federal Reserve balance sheet only; not global liquidity, broad money, private credit, or tradable cash.",
+      "Total reverse repos include foreign official and international accounts and other reverse repos. This is not the popular assets-minus-TGA-minus-ON-RRP formula.",
+      "The gap includes omitted liabilities and capital; it is not an unexplained statistical error or a complete reconciliation of every H.4.1 line.",
+      "Current-vintage history is unsuitable for a historical point-in-time backtest. Observation dates do not establish publication or availability dates.",
+      "Per-observation historical publication dates and vintages are not retrieved. Snapshot comparisons establish changes seen between captures, not the time or reason an official revision occurred.",
+      "The 10-calendar-day stale threshold is an operational warning, not a release-calendar forecast. Same-day captures can straddle an upstream update.",
+      "A rising proxy does not establish easier financial conditions or predictive market returns. No live trading or investment recommendation."
+    ],
+    "output_unit": "USD billions",
+    "recipe_count": 2,
+    "recipes": {
+      "gap": {
+        "coefficients": {
+          "WALCL": "1",
+          "WDTGAL": "-1",
+          "WLRRAL": "-1",
+          "WRBWFRBL": "-1"
+        },
+        "formula": "G = L − R",
+        "name": "Proxy–reserve gap"
+      },
+      "liquidity": {
+        "coefficients": {
+          "WALCL": "1",
+          "WDTGAL": "-1",
+          "WLRRAL": "-1"
+        },
+        "formula": "L = (WALCL − WDTGAL − WLRRAL) / 1000",
+        "name": "Selected balance-sheet liquidity"
+      },
+      "reserves": {
+        "coefficients": {
+          "WRBWFRBL": "1"
+        },
+        "formula": "R = WRBWFRBL / 1000",
+        "name": "Observed reserve balances"
+      }
+    },
+    "series": {
+      "WALCL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Fed assets",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level",
+        "unit": "USD millions"
+      },
+      "WDTGAL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Treasury general account",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "U.S. Treasury, General Account: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "WLRRAL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Total reverse repos",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "WRBWFRBL": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Reserve balances",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level",
+        "unit": "USD millions"
+      }
+    },
+    "stale_after_days": 10,
+    "title": "US selected balance-sheet liquidity and reserve cross-check",
+    "version": "1.0.0"
+  },
+  "methodology_sha256": "fb94eaa562e4f07f2ec9c5ffa2e986692247315c038852fc7d44ab55c5afad9b",
+  "missing_dates": [],
+  "observation_age_days": 7,
+  "package_version": "0.3.0",
+  "product": "Open Macro Lab",
+  "provisional_name": true,
+  "rows": [
+    {
+      "date": "2024-01-03",
+      "gap": "2392.177",
+      "inputs": {
+        "WALCL": "7681024",
+        "WDTGAL": "743464",
+        "WLRRAL": "1085975",
+        "WRBWFRBL": "3459408"
+      },
+      "liquidity": "5851.585",
+      "reserves": "3459.408"
+    },
+    {
+      "date": "2024-01-10",
+      "gap": "2380.327",
+      "inputs": {
+        "WALCL": "7686710",
+        "WDTGAL": "727856",
+        "WLRRAL": "1041144",
+        "WRBWFRBL": "3537383"
+      },
+      "liquidity": "5917.71",
+      "reserves": "3537.383"
+    },
+    {
+      "date": "2024-01-17",
+      "gap": "2371.548",
+      "inputs": {
+        "WALCL": "7673741",
+        "WDTGAL": "773544",
+        "WLRRAL": "936323",
+        "WRBWFRBL": "3592326"
+      },
+      "liquidity": "5963.874",
+      "reserves": "3592.326"
+    },
+    {
+      "date": "2024-01-24",
+      "gap": "2392.293",
+      "inputs": {
+        "WALCL": "7677230",
+        "WDTGAL": "815159",
+        "WLRRAL": "980069",
+        "WRBWFRBL": "3489709"
+      },
+      "liquidity": "5882.002",
+      "reserves": "3489.709"
+    },
+    {
+      "date": "2024-01-31",
+      "gap": "2375.323",
+      "inputs": {
+        "WALCL": "7630124",
+        "WDTGAL": "865481",
+        "WLRRAL": "977603",
+        "WRBWFRBL": "3411717"
+      },
+      "liquidity": "5787.04",
+      "reserves": "3411.717"
+    },
+    {
+      "date": "2024-02-07",
+      "gap": "2363.808",
+      "inputs": {
+        "WALCL": "7631300",
+        "WDTGAL": "821575",
+        "WLRRAL": "890179",
+        "WRBWFRBL": "3555738"
+      },
+      "liquidity": "5919.546",
+      "reserves": "3555.738"
+    },
+    {
+      "date": "2024-02-14",
+      "gap": "2358.953",
+      "inputs": {
+        "WALCL": "7633874",
+        "WDTGAL": "831880",
+        "WLRRAL": "905572",
+        "WRBWFRBL": "3537469"
+      },
+      "liquidity": "5896.422",
+      "reserves": "3537.469"
+    },
+    {
+      "date": "2024-02-21",
+      "gap": "2355.204",
+      "inputs": {
+        "WALCL": "7581683",
+        "WDTGAL": "788759",
+        "WLRRAL": "914625",
+        "WRBWFRBL": "3523095"
+      },
+      "liquidity": "5878.299",
+      "reserves": "3523.095"
+    },
+    {
+      "date": "2024-02-28",
+      "gap": "2350.352",
+      "inputs": {
+        "WALCL": "7567807",
+        "WDTGAL": "767672",
+        "WLRRAL": "908801",
+        "WRBWFRBL": "3540982"
+      },
+      "liquidity": "5891.334",
+      "reserves": "3540.982"
+    },
+    {
+      "date": "2024-03-06",
+      "gap": "2364.224",
+      "inputs": {
+        "WALCL": "7538857",
+        "WDTGAL": "760550",
+        "WLRRAL": "793394",
+        "WRBWFRBL": "3620689"
+      },
+      "liquidity": "5984.913",
+      "reserves": "3620.689"
+    },
+    {
+      "date": "2024-03-13",
+      "gap": "2365.75",
+      "inputs": {
+        "WALCL": "7541969",
+        "WDTGAL": "748388",
+        "WLRRAL": "854678",
+        "WRBWFRBL": "3573153"
+      },
+      "liquidity": "5938.903",
+      "reserves": "3573.153"
+    },
+    {
+      "date": "2024-03-20",
+      "gap": "2366.7",
+      "inputs": {
+        "WALCL": "7514348",
+        "WDTGAL": "812605",
+        "WLRRAL": "845466",
+        "WRBWFRBL": "3489577"
+      },
+      "liquidity": "5856.277",
+      "reserves": "3489.577"
+    },
+    {
+      "date": "2024-03-27",
+      "gap": "2367.33",
+      "inputs": {
+        "WALCL": "7484739",
+        "WDTGAL": "772260",
+        "WLRRAL": "872746",
+        "WRBWFRBL": "3472403"
+      },
+      "liquidity": "5839.733",
+      "reserves": "3472.403"
+    },
+    {
+      "date": "2024-04-03",
+      "gap": "2363.927",
+      "inputs": {
+        "WALCL": "7439558",
+        "WDTGAL": "732828",
+        "WLRRAL": "801636",
+        "WRBWFRBL": "3541167"
+      },
+      "liquidity": "5905.094",
+      "reserves": "3541.167"
+    },
+    {
+      "date": "2024-04-10",
+      "gap": "2350.751",
+      "inputs": {
+        "WALCL": "7438176",
+        "WDTGAL": "672537",
+        "WLRRAL": "799197",
+        "WRBWFRBL": "3615691"
+      },
+      "liquidity": "5966.442",
+      "reserves": "3615.691"
+    },
+    {
+      "date": "2024-04-17",
+      "gap": "2350.402",
+      "inputs": {
+        "WALCL": "7405506",
+        "WDTGAL": "929932",
+        "WLRRAL": "795640",
+        "WRBWFRBL": "3329532"
+      },
+      "liquidity": "5679.934",
+      "reserves": "3329.532"
+    },
+    {
+      "date": "2024-04-24",
+      "gap": "2392.09",
+      "inputs": {
+        "WALCL": "7402434",
+        "WDTGAL": "929379",
+        "WLRRAL": "809259",
+        "WRBWFRBL": "3271706"
+      },
+      "liquidity": "5663.796",
+      "reserves": "3271.706"
+    },
+    {
+      "date": "2024-05-01",
+      "gap": "2357.024",
+      "inputs": {
+        "WALCL": "7362474",
+        "WDTGAL": "890442",
+        "WLRRAL": "798065",
+        "WRBWFRBL": "3316943"
+      },
+      "liquidity": "5673.967",
+      "reserves": "3316.943"
+    },
+    {
+      "date": "2024-05-08",
+      "gap": "2350.948",
+      "inputs": {
+        "WALCL": "7353408",
+        "WDTGAL": "816809",
+        "WLRRAL": "854964",
+        "WRBWFRBL": "3330687"
+      },
+      "liquidity": "5681.635",
+      "reserves": "3330.687"
+    },
+    {
+      "date": "2024-05-15",
+      "gap": "2354.568",
+      "inputs": {
+        "WALCL": "7304272",
+        "WDTGAL": "706108",
+        "WLRRAL": "827210",
+        "WRBWFRBL": "3416386"
+      },
+      "liquidity": "5770.954",
+      "reserves": "3416.386"
+    },
+    {
+      "date": "2024-05-22",
+      "gap": "2348.76",
+      "inputs": {
+        "WALCL": "7299566",
+        "WDTGAL": "710882",
+        "WLRRAL": "864910",
+        "WRBWFRBL": "3375014"
+      },
+      "liquidity": "5723.774",
+      "reserves": "3375.014"
+    },
+    {
+      "date": "2024-05-29",
+      "gap": "2352.622",
+      "inputs": {
+        "WALCL": "7284319",
+        "WDTGAL": "716020",
+        "WLRRAL": "824602",
+        "WRBWFRBL": "3391075"
+      },
+      "liquidity": "5743.697",
+      "reserves": "3391.075"
+    },
+    {
+      "date": "2024-06-05",
+      "gap": "2348.79",
+      "inputs": {
+        "WALCL": "7255687",
+        "WDTGAL": "703314",
+        "WLRRAL": "745845",
+        "WRBWFRBL": "3457738"
+      },
+      "liquidity": "5806.528",
+      "reserves": "3457.738"
+    },
+    {
+      "date": "2024-06-12",
+      "gap": "2341.974",
+      "inputs": {
+        "WALCL": "7258974",
+        "WDTGAL": "650212",
+        "WLRRAL": "832756",
+        "WRBWFRBL": "3434032"
+      },
+      "liquidity": "5776.006",
+      "reserves": "3434.032"
+    },
+    {
+      "date": "2024-06-19",
+      "gap": "2339.349",
+      "inputs": {
+        "WALCL": "7252542",
+        "WDTGAL": "782158",
+        "WLRRAL": "764869",
+        "WRBWFRBL": "3366166"
+      },
+      "liquidity": "5705.515",
+      "reserves": "3366.166"
+    },
+    {
+      "date": "2024-06-26",
+      "gap": "2338.296",
+      "inputs": {
+        "WALCL": "7231163",
+        "WDTGAL": "744206",
+        "WLRRAL": "879766",
+        "WRBWFRBL": "3268895"
+      },
+      "liquidity": "5607.191",
+      "reserves": "3268.895"
+    },
+    {
+      "date": "2024-07-03",
+      "gap": "2342.439",
+      "inputs": {
+        "WALCL": "7221520",
+        "WDTGAL": "745608",
+        "WLRRAL": "811308",
+        "WRBWFRBL": "3322165"
+      },
+      "liquidity": "5664.604",
+      "reserves": "3322.165"
+    },
+    {
+      "date": "2024-07-10",
+      "gap": "2339.462",
+      "inputs": {
+        "WALCL": "7224079",
+        "WDTGAL": "722328",
+        "WLRRAL": "821243",
+        "WRBWFRBL": "3341046"
+      },
+      "liquidity": "5680.508",
+      "reserves": "3341.046"
+    },
+    {
+      "date": "2024-07-17",
+      "gap": "2328.981",
+      "inputs": {
+        "WALCL": "7208247",
+        "WDTGAL": "766779",
+        "WLRRAL": "790041",
+        "WRBWFRBL": "3322446"
+      },
+      "liquidity": "5651.427",
+      "reserves": "3322.446"
+    },
+    {
+      "date": "2024-07-24",
+      "gap": "2356.184",
+      "inputs": {
+        "WALCL": "7205455",
+        "WDTGAL": "767419",
+        "WLRRAL": "805967",
+        "WRBWFRBL": "3275885"
+      },
+      "liquidity": "5632.069",
+      "reserves": "3275.885"
+    },
+    {
+      "date": "2024-07-31",
+      "gap": "2332.429",
+      "inputs": {
+        "WALCL": "7178391",
+        "WDTGAL": "854001",
+        "WLRRAL": "813261",
+        "WRBWFRBL": "3178700"
+      },
+      "liquidity": "5511.129",
+      "reserves": "3178.7"
+    },
+    {
+      "date": "2024-08-07",
+      "gap": "2335.226",
+      "inputs": {
+        "WALCL": "7175256",
+        "WDTGAL": "785233",
+        "WLRRAL": "681881",
+        "WRBWFRBL": "3372916"
+      },
+      "liquidity": "5708.142",
+      "reserves": "3372.916"
+    },
+    {
+      "date": "2024-08-14",
+      "gap": "2327.751",
+      "inputs": {
+        "WALCL": "7177688",
+        "WDTGAL": "788823",
+        "WLRRAL": "722198",
+        "WRBWFRBL": "3338916"
+      },
+      "liquidity": "5666.667",
+      "reserves": "3338.916"
+    },
+    {
+      "date": "2024-08-21",
+      "gap": "2327.62",
+      "inputs": {
+        "WALCL": "7139952",
+        "WDTGAL": "734727",
+        "WLRRAL": "718527",
+        "WRBWFRBL": "3359078"
+      },
+      "liquidity": "5686.698",
+      "reserves": "3359.078"
+    },
+    {
+      "date": "2024-08-28",
+      "gap": "2319.201",
+      "inputs": {
+        "WALCL": "7123238",
+        "WDTGAL": "757077",
+        "WLRRAL": "802001",
+        "WRBWFRBL": "3244959"
+      },
+      "liquidity": "5564.16",
+      "reserves": "3244.959"
+    },
+    {
+      "date": "2024-09-04",
+      "gap": "2332.664",
+      "inputs": {
+        "WALCL": "7112567",
+        "WDTGAL": "771047",
+        "WLRRAL": "744252",
+        "WRBWFRBL": "3264604"
+      },
+      "liquidity": "5597.268",
+      "reserves": "3264.604"
+    },
+    {
+      "date": "2024-09-11",
+      "gap": "2330.459",
+      "inputs": {
+        "WALCL": "7115001",
+        "WDTGAL": "725577",
+        "WLRRAL": "699224",
+        "WRBWFRBL": "3359741"
+      },
+      "liquidity": "5690.2",
+      "reserves": "3359.741"
+    },
+    {
+      "date": "2024-09-18",
+      "gap": "2329.312",
+      "inputs": {
+        "WALCL": "7109137",
+        "WDTGAL": "839398",
+        "WLRRAL": "723605",
+        "WRBWFRBL": "3216822"
+      },
+      "liquidity": "5546.134",
+      "reserves": "3216.822"
+    },
+    {
+      "date": "2024-09-25",
+      "gap": "2326.27",
+      "inputs": {
+        "WALCL": "7080059",
+        "WDTGAL": "778910",
+        "WLRRAL": "833314",
+        "WRBWFRBL": "3141565"
+      },
+      "liquidity": "5467.835",
+      "reserves": "3141.565"
+    },
+    {
+      "date": "2024-10-02",
+      "gap": "2327.049",
+      "inputs": {
+        "WALCL": "7046925",
+        "WDTGAL": "823412",
+        "WLRRAL": "799254",
+        "WRBWFRBL": "3097210"
+      },
+      "liquidity": "5424.259",
+      "reserves": "3097.21"
+    },
+    {
+      "date": "2024-10-09",
+      "gap": "2323.103",
+      "inputs": {
+        "WALCL": "7046840",
+        "WDTGAL": "787395",
+        "WLRRAL": "739297",
+        "WRBWFRBL": "3197045"
+      },
+      "liquidity": "5520.148",
+      "reserves": "3197.045"
+    },
+    {
+      "date": "2024-10-16",
+      "gap": "2326.68",
+      "inputs": {
+        "WALCL": "7039284",
+        "WDTGAL": "814751",
+        "WLRRAL": "669015",
+        "WRBWFRBL": "3228838"
+      },
+      "liquidity": "5555.518",
+      "reserves": "3228.838"
+    },
+    {
+      "date": "2024-10-23",
+      "gap": "2314.919",
+      "inputs": {
+        "WALCL": "7029408",
+        "WDTGAL": "817410",
+        "WLRRAL": "668617",
+        "WRBWFRBL": "3228462"
+      },
+      "liquidity": "5543.381",
+      "reserves": "3228.462"
+    },
+    {
+      "date": "2024-10-30",
+      "gap": "2323.552",
+      "inputs": {
+        "WALCL": "7013490",
+        "WDTGAL": "847137",
+        "WLRRAL": "627007",
+        "WRBWFRBL": "3215794"
+      },
+      "liquidity": "5539.346",
+      "reserves": "3215.794"
+    },
+    {
+      "date": "2024-11-06",
+      "gap": "2325.463",
+      "inputs": {
+        "WALCL": "6994299",
+        "WDTGAL": "840227",
+        "WLRRAL": "573077",
+        "WRBWFRBL": "3255532"
+      },
+      "liquidity": "5580.995",
+      "reserves": "3255.532"
+    },
+    {
+      "date": "2024-11-13",
+      "gap": "2338.079",
+      "inputs": {
+        "WALCL": "6967108",
+        "WDTGAL": "808857",
+        "WLRRAL": "628124",
+        "WRBWFRBL": "3192048"
+      },
+      "liquidity": "5530.127",
+      "reserves": "3192.048"
+    },
+    {
+      "date": "2024-11-20",
+      "gap": "2318.436",
+      "inputs": {
+        "WALCL": "6923731",
+        "WDTGAL": "737834",
+        "WLRRAL": "600142",
+        "WRBWFRBL": "3267319"
+      },
+      "liquidity": "5585.755",
+      "reserves": "3267.319"
+    },
+    {
+      "date": "2024-11-27",
+      "gap": "2318.892",
+      "inputs": {
+        "WALCL": "6905140",
+        "WDTGAL": "782704",
+        "WLRRAL": "569509",
+        "WRBWFRBL": "3234035"
+      },
+      "liquidity": "5552.927",
+      "reserves": "3234.035"
+    },
+    {
+      "date": "2024-12-04",
+      "gap": "2317.104",
+      "inputs": {
+        "WALCL": "6895827",
+        "WDTGAL": "815011",
+        "WLRRAL": "547563",
+        "WRBWFRBL": "3216149"
+      },
+      "liquidity": "5533.253",
+      "reserves": "3216.149"
+    },
+    {
+      "date": "2024-12-11",
+      "gap": "2316.042",
+      "inputs": {
+        "WALCL": "6897485",
+        "WDTGAL": "711354",
+        "WLRRAL": "596284",
+        "WRBWFRBL": "3273805"
+      },
+      "liquidity": "5589.847",
+      "reserves": "3273.805"
+    },
+    {
+      "date": "2024-12-18",
+      "gap": "2325.689",
+      "inputs": {
+        "WALCL": "6889332",
+        "WDTGAL": "803975",
+        "WLRRAL": "522209",
+        "WRBWFRBL": "3237459"
+      },
+      "liquidity": "5563.148",
+      "reserves": "3237.459"
+    },
+    {
+      "date": "2024-12-25",
+      "gap": "2366.121",
+      "inputs": {
+        "WALCL": "6885963",
+        "WDTGAL": "735039",
+        "WLRRAL": "566327",
+        "WRBWFRBL": "3218476"
+      },
+      "liquidity": "5584.597",
+      "reserves": "3218.476"
+    },
+    {
+      "date": "2025-01-01",
+      "gap": "2349.845",
+      "inputs": {
+        "WALCL": "6852491",
+        "WDTGAL": "721892",
+        "WLRRAL": "888395",
+        "WRBWFRBL": "2892359"
+      },
+      "liquidity": "5242.204",
+      "reserves": "2892.359"
+    },
+    {
+      "date": "2025-01-08",
+      "gap": "2329.068",
+      "inputs": {
+        "WALCL": "6853554",
+        "WDTGAL": "620531",
+        "WLRRAL": "571520",
+        "WRBWFRBL": "3332435"
+      },
+      "liquidity": "5661.503",
+      "reserves": "3332.435"
+    },
+    {
+      "date": "2025-01-15",
+      "gap": "2319.201",
+      "inputs": {
+        "WALCL": "6834070",
+        "WDTGAL": "651187",
+        "WLRRAL": "504641",
+        "WRBWFRBL": "3359041"
+      },
+      "liquidity": "5678.242",
+      "reserves": "3359.041"
+    },
+    {
+      "date": "2025-01-22",
+      "gap": "2318.63",
+      "inputs": {
+        "WALCL": "6831760",
+        "WDTGAL": "665485",
+        "WLRRAL": "516449",
+        "WRBWFRBL": "3331196"
+      },
+      "liquidity": "5649.826",
+      "reserves": "3331.196"
+    },
+    {
+      "date": "2025-01-29",
+      "gap": "2309.596",
+      "inputs": {
+        "WALCL": "6818186",
+        "WDTGAL": "811549",
+        "WLRRAL": "496387",
+        "WRBWFRBL": "3200654"
+      },
+      "liquidity": "5510.25",
+      "reserves": "3200.654"
+    },
+    {
+      "date": "2025-02-05",
+      "gap": "2304.241",
+      "inputs": {
+        "WALCL": "6810935",
+        "WDTGAL": "817953",
+        "WLRRAL": "455413",
+        "WRBWFRBL": "3233328"
+      },
+      "liquidity": "5537.569",
+      "reserves": "3233.328"
+    },
+    {
+      "date": "2025-02-12",
+      "gap": "2296.485",
+      "inputs": {
+        "WALCL": "6813513",
+        "WDTGAL": "809154",
+        "WLRRAL": "452467",
+        "WRBWFRBL": "3255407"
+      },
+      "liquidity": "5551.892",
+      "reserves": "3255.407"
+    },
+    {
+      "date": "2025-02-19",
+      "gap": "2306.224",
+      "inputs": {
+        "WALCL": "6782332",
+        "WDTGAL": "738938",
+        "WLRRAL": "461029",
+        "WRBWFRBL": "3276141"
+      },
+      "liquidity": "5582.365",
+      "reserves": "3276.141"
+    },
+    {
+      "date": "2025-02-26",
+      "gap": "2305.012",
+      "inputs": {
+        "WALCL": "6766101",
+        "WDTGAL": "568550",
+        "WLRRAL": "511784",
+        "WRBWFRBL": "3380755"
+      },
+      "liquidity": "5685.767",
+      "reserves": "3380.755"
+    },
+    {
+      "date": "2025-03-05",
+      "gap": "2321.883",
+      "inputs": {
+        "WALCL": "6756764",
+        "WDTGAL": "522818",
+        "WLRRAL": "530889",
+        "WRBWFRBL": "3381174"
+      },
+      "liquidity": "5703.057",
+      "reserves": "3381.174"
+    },
+    {
+      "date": "2025-03-12",
+      "gap": "2327.02",
+      "inputs": {
+        "WALCL": "6759571",
+        "WDTGAL": "450713",
+        "WLRRAL": "522151",
+        "WRBWFRBL": "3459687"
+      },
+      "liquidity": "5786.707",
+      "reserves": "3459.687"
+    },
+    {
+      "date": "2025-03-19",
+      "gap": "2342.993",
+      "inputs": {
+        "WALCL": "6755982",
+        "WDTGAL": "415799",
+        "WLRRAL": "571477",
+        "WRBWFRBL": "3425713"
+      },
+      "liquidity": "5768.706",
+      "reserves": "3425.713"
+    },
+    {
+      "date": "2025-03-26",
+      "gap": "2345.122",
+      "inputs": {
+        "WALCL": "6740253",
+        "WDTGAL": "315970",
+        "WLRRAL": "628611",
+        "WRBWFRBL": "3450550"
+      },
+      "liquidity": "5795.672",
+      "reserves": "3450.55"
+    },
+    {
+      "date": "2025-04-02",
+      "gap": "2372.526",
+      "inputs": {
+        "WALCL": "6723452",
+        "WDTGAL": "301624",
+        "WLRRAL": "622253",
+        "WRBWFRBL": "3427049"
+      },
+      "liquidity": "5799.575",
+      "reserves": "3427.049"
+    },
+    {
+      "date": "2025-04-09",
+      "gap": "2393.629",
+      "inputs": {
+        "WALCL": "6727416",
+        "WDTGAL": "315189",
+        "WLRRAL": "534253",
+        "WRBWFRBL": "3484345"
+      },
+      "liquidity": "5877.974",
+      "reserves": "3484.345"
+    },
+    {
+      "date": "2025-04-16",
+      "gap": "2395.057",
+      "inputs": {
+        "WALCL": "6727113",
+        "WDTGAL": "638783",
+        "WLRRAL": "412428",
+        "WRBWFRBL": "3280845"
+      },
+      "liquidity": "5675.902",
+      "reserves": "3280.845"
+    },
+    {
+      "date": "2025-04-23",
+      "gap": "2396.866",
+      "inputs": {
+        "WALCL": "6726930",
+        "WDTGAL": "576159",
+        "WLRRAL": "544990",
+        "WRBWFRBL": "3208915"
+      },
+      "liquidity": "5605.781",
+      "reserves": "3208.915"
+    },
+    {
+      "date": "2025-04-30",
+      "gap": "2399.221",
+      "inputs": {
+        "WALCL": "6709277",
+        "WDTGAL": "677657",
+        "WLRRAL": "632122",
+        "WRBWFRBL": "3000277"
+      },
+      "liquidity": "5399.498",
+      "reserves": "3000.277"
+    },
+    {
+      "date": "2025-05-07",
+      "gap": "2389.856",
+      "inputs": {
+        "WALCL": "6710889",
+        "WDTGAL": "595860",
+        "WLRRAL": "524554",
+        "WRBWFRBL": "3200619"
+      },
+      "liquidity": "5590.475",
+      "reserves": "3200.619"
+    },
+    {
+      "date": "2025-05-14",
+      "gap": "2395.909",
+      "inputs": {
+        "WALCL": "6713270",
+        "WDTGAL": "562433",
+        "WLRRAL": "519213",
+        "WRBWFRBL": "3235715"
+      },
+      "liquidity": "5631.624",
+      "reserves": "3235.715"
+    },
+    {
+      "date": "2025-05-21",
+      "gap": "2394.932",
+      "inputs": {
+        "WALCL": "6688726",
+        "WDTGAL": "475886",
+        "WLRRAL": "534143",
+        "WRBWFRBL": "3283765"
+      },
+      "liquidity": "5678.697",
+      "reserves": "3283.765"
+    },
+    {
+      "date": "2025-05-28",
+      "gap": "2398.492",
+      "inputs": {
+        "WALCL": "6673244",
+        "WDTGAL": "436627",
+        "WLRRAL": "544111",
+        "WRBWFRBL": "3294014"
+      },
+      "liquidity": "5692.506",
+      "reserves": "3294.014"
+    },
+    {
+      "date": "2025-06-04",
+      "gap": "2390.86",
+      "inputs": {
+        "WALCL": "6672885",
+        "WDTGAL": "376160",
+        "WLRRAL": "543927",
+        "WRBWFRBL": "3361938"
+      },
+      "liquidity": "5752.798",
+      "reserves": "3361.938"
+    },
+    {
+      "date": "2025-06-11",
+      "gap": "2394.395",
+      "inputs": {
+        "WALCL": "6677155",
+        "WDTGAL": "277025",
+        "WLRRAL": "576060",
+        "WRBWFRBL": "3429675"
+      },
+      "liquidity": "5824.07",
+      "reserves": "3429.675"
+    },
+    {
+      "date": "2025-06-18",
+      "gap": "2397.025",
+      "inputs": {
+        "WALCL": "6681056",
+        "WDTGAL": "383851",
+        "WLRRAL": "577189",
+        "WRBWFRBL": "3322991"
+      },
+      "liquidity": "5720.016",
+      "reserves": "3322.991"
+    },
+    {
+      "date": "2025-06-25",
+      "gap": "2396.296",
+      "inputs": {
+        "WALCL": "6662200",
+        "WDTGAL": "334579",
+        "WLRRAL": "584051",
+        "WRBWFRBL": "3347274"
+      },
+      "liquidity": "5743.57",
+      "reserves": "3347.274"
+    },
+    {
+      "date": "2025-07-02",
+      "gap": "2399.726",
+      "inputs": {
+        "WALCL": "6659598",
+        "WDTGAL": "372232",
+        "WLRRAL": "631138",
+        "WRBWFRBL": "3256502"
+      },
+      "liquidity": "5656.228",
+      "reserves": "3256.502"
+    },
+    {
+      "date": "2025-07-09",
+      "gap": "2399.092",
+      "inputs": {
+        "WALCL": "6661912",
+        "WDTGAL": "311048",
+        "WLRRAL": "609773",
+        "WRBWFRBL": "3341999"
+      },
+      "liquidity": "5741.091",
+      "reserves": "3341.999"
+    },
+    {
+      "date": "2025-07-16",
+      "gap": "2397.467",
+      "inputs": {
+        "WALCL": "6659273",
+        "WDTGAL": "312085",
+        "WLRRAL": "574685",
+        "WRBWFRBL": "3375036"
+      },
+      "liquidity": "5772.503",
+      "reserves": "3375.036"
+    },
+    {
+      "date": "2025-07-23",
+      "gap": "2398.789",
+      "inputs": {
+        "WALCL": "6657715",
+        "WDTGAL": "333538",
+        "WLRRAL": "567006",
+        "WRBWFRBL": "3358382"
+      },
+      "liquidity": "5757.171",
+      "reserves": "3358.382"
+    },
+    {
+      "date": "2025-07-30",
+      "gap": "2397.755",
+      "inputs": {
+        "WALCL": "6642578",
+        "WDTGAL": "419446",
+        "WLRRAL": "525681",
+        "WRBWFRBL": "3299696"
+      },
+      "liquidity": "5697.451",
+      "reserves": "3299.696"
+    },
+    {
+      "date": "2025-08-06",
+      "gap": "2400.281",
+      "inputs": {
+        "WALCL": "6640843",
+        "WDTGAL": "464315",
+        "WLRRAL": "445875",
+        "WRBWFRBL": "3330372"
+      },
+      "liquidity": "5730.653",
+      "reserves": "3330.372"
+    },
+    {
+      "date": "2025-08-13",
+      "gap": "2397.599",
+      "inputs": {
+        "WALCL": "6643615",
+        "WDTGAL": "515469",
+        "WLRRAL": "402201",
+        "WRBWFRBL": "3328346"
+      },
+      "liquidity": "5725.945",
+      "reserves": "3328.346"
+    },
+    {
+      "date": "2025-08-20",
+      "gap": "2395.651",
+      "inputs": {
+        "WALCL": "6618415",
+        "WDTGAL": "526063",
+        "WLRRAL": "399066",
+        "WRBWFRBL": "3297635"
+      },
+      "liquidity": "5693.286",
+      "reserves": "3297.635"
+    },
+    {
+      "date": "2025-08-27",
+      "gap": "2397.58",
+      "inputs": {
+        "WALCL": "6603384",
+        "WDTGAL": "595798",
+        "WLRRAL": "393155",
+        "WRBWFRBL": "3216851"
+      },
+      "liquidity": "5614.431",
+      "reserves": "3216.851"
+    },
+    {
+      "date": "2025-09-03",
+      "gap": "2403.496",
+      "inputs": {
+        "WALCL": "6602071",
+        "WDTGAL": "661939",
+        "WLRRAL": "368731",
+        "WRBWFRBL": "3167905"
+      },
+      "liquidity": "5571.401",
+      "reserves": "3167.905"
+    },
+    {
+      "date": "2025-09-10",
+      "gap": "2404.508",
+      "inputs": {
+        "WALCL": "6605962",
+        "WDTGAL": "667585",
+        "WLRRAL": "382956",
+        "WRBWFRBL": "3150913"
+      },
+      "liquidity": "5555.421",
+      "reserves": "3150.913"
+    },
+    {
+      "date": "2025-09-17",
+      "gap": "2409.532",
+      "inputs": {
+        "WALCL": "6608597",
+        "WDTGAL": "807142",
+        "WLRRAL": "371571",
+        "WRBWFRBL": "3020352"
+      },
+      "liquidity": "5429.884",
+      "reserves": "3020.352"
+    },
+    {
+      "date": "2025-09-24",
+      "gap": "2441.431",
+      "inputs": {
+        "WALCL": "6608395",
+        "WDTGAL": "757970",
+        "WLRRAL": "409302",
+        "WRBWFRBL": "2999692"
+      },
+      "liquidity": "5441.123",
+      "reserves": "2999.692"
+    },
+    {
+      "date": "2025-10-01",
+      "gap": "2403.375",
+      "inputs": {
+        "WALCL": "6587119",
+        "WDTGAL": "819378",
+        "WLRRAL": "384772",
+        "WRBWFRBL": "2979594"
+      },
+      "liquidity": "5382.969",
+      "reserves": "2979.594"
+    },
+    {
+      "date": "2025-10-08",
+      "gap": "2407.067",
+      "inputs": {
+        "WALCL": "6590815",
+        "WDTGAL": "794054",
+        "WLRRAL": "355839",
+        "WRBWFRBL": "3033855"
+      },
+      "liquidity": "5440.922",
+      "reserves": "3033.855"
+    },
+    {
+      "date": "2025-10-15",
+      "gap": "2408.399",
+      "inputs": {
+        "WALCL": "6596454",
+        "WDTGAL": "851952",
+        "WLRRAL": "347901",
+        "WRBWFRBL": "2988202"
+      },
+      "liquidity": "5396.601",
+      "reserves": "2988.202"
+    },
+    {
+      "date": "2025-10-22",
+      "gap": "2400.398",
+      "inputs": {
+        "WALCL": "6589533",
+        "WDTGAL": "905074",
+        "WLRRAL": "354424",
+        "WRBWFRBL": "2929637"
+      },
+      "liquidity": "5330.035",
+      "reserves": "2929.637"
+    },
+    {
+      "date": "2025-10-29",
+      "gap": "2407.853",
+      "inputs": {
+        "WALCL": "6587034",
+        "WDTGAL": "983859",
+        "WLRRAL": "367413",
+        "WRBWFRBL": "2827909"
+      },
+      "liquidity": "5235.762",
+      "reserves": "2827.909"
+    },
+    {
+      "date": "2025-11-05",
+      "gap": "2405.628",
+      "inputs": {
+        "WALCL": "6572732",
+        "WDTGAL": "942700",
+        "WLRRAL": "372481",
+        "WRBWFRBL": "2851923"
+      },
+      "liquidity": "5257.551",
+      "reserves": "2851.923"
+    },
+    {
+      "date": "2025-11-12",
+      "gap": "2411.623",
+      "inputs": {
+        "WALCL": "6580462",
+        "WDTGAL": "943145",
+        "WLRRAL": "342354",
+        "WRBWFRBL": "2883340"
+      },
+      "liquidity": "5294.963",
+      "reserves": "2883.34"
+    },
+    {
+      "date": "2025-11-19",
+      "gap": "2409.662",
+      "inputs": {
+        "WALCL": "6555283",
+        "WDTGAL": "900832",
+        "WLRRAL": "327258",
+        "WRBWFRBL": "2917531"
+      },
+      "liquidity": "5327.193",
+      "reserves": "2917.531"
+    },
+    {
+      "date": "2025-11-26",
+      "gap": "2422.355",
+      "inputs": {
+        "WALCL": "6552419",
+        "WDTGAL": "899678",
+        "WLRRAL": "332399",
+        "WRBWFRBL": "2897987"
+      },
+      "liquidity": "5320.342",
+      "reserves": "2897.987"
+    },
+    {
+      "date": "2025-12-03",
+      "gap": "2416.525",
+      "inputs": {
+        "WALCL": "6535781",
+        "WDTGAL": "908523",
+        "WLRRAL": "332569",
+        "WRBWFRBL": "2878164"
+      },
+      "liquidity": "5294.689",
+      "reserves": "2878.164"
+    },
+    {
+      "date": "2025-12-10",
+      "gap": "2428.15",
+      "inputs": {
+        "WALCL": "6539303",
+        "WDTGAL": "805827",
+        "WLRRAL": "331559",
+        "WRBWFRBL": "2973767"
+      },
+      "liquidity": "5401.917",
+      "reserves": "2973.767"
+    },
+    {
+      "date": "2025-12-17",
+      "gap": "2429.547",
+      "inputs": {
+        "WALCL": "6556861",
+        "WDTGAL": "861417",
+        "WLRRAL": "332245",
+        "WRBWFRBL": "2933652"
+      },
+      "liquidity": "5363.199",
+      "reserves": "2933.652"
+    },
+    {
+      "date": "2025-12-24",
+      "gap": "2477.641",
+      "inputs": {
+        "WALCL": "6581231",
+        "WDTGAL": "801537",
+        "WLRRAL": "321539",
+        "WRBWFRBL": "2980514"
+      },
+      "liquidity": "5458.155",
+      "reserves": "2980.514"
+    },
+    {
+      "date": "2025-12-31",
+      "gap": "2452.126",
+      "inputs": {
+        "WALCL": "6640618",
+        "WDTGAL": "872853",
+        "WLRRAL": "462198",
+        "WRBWFRBL": "2853441"
+      },
+      "liquidity": "5305.567",
+      "reserves": "2853.441"
+    },
+    {
+      "date": "2026-01-07",
+      "gap": "2438.734",
+      "inputs": {
+        "WALCL": "6573602",
+        "WDTGAL": "783571",
+        "WLRRAL": "328300",
+        "WRBWFRBL": "3022997"
+      },
+      "liquidity": "5461.731",
+      "reserves": "3022.997"
+    },
+    {
+      "date": "2026-01-14",
+      "gap": "2425.128",
+      "inputs": {
+        "WALCL": "6581700",
+        "WDTGAL": "777061",
+        "WLRRAL": "317751",
+        "WRBWFRBL": "3061760"
+      },
+      "liquidity": "5486.888",
+      "reserves": "3061.76"
+    },
+    {
+      "date": "2026-01-21",
+      "gap": "2433.498",
+      "inputs": {
+        "WALCL": "6584580",
+        "WDTGAL": "871169",
+        "WLRRAL": "323388",
+        "WRBWFRBL": "2956525"
+      },
+      "liquidity": "5390.023",
+      "reserves": "2956.525"
+    },
+    {
+      "date": "2026-01-28",
+      "gap": "2424.772",
+      "inputs": {
+        "WALCL": "6587568",
+        "WDTGAL": "952705",
+        "WLRRAL": "327151",
+        "WRBWFRBL": "2882940"
+      },
+      "liquidity": "5307.712",
+      "reserves": "2882.94"
+    },
+    {
+      "date": "2026-02-04",
+      "gap": "2433.82",
+      "inputs": {
+        "WALCL": "6605909",
+        "WDTGAL": "907737",
+        "WLRRAL": "326859",
+        "WRBWFRBL": "2937493"
+      },
+      "liquidity": "5371.313",
+      "reserves": "2937.493"
+    },
+    {
+      "date": "2026-02-11",
+      "gap": "2432.701",
+      "inputs": {
+        "WALCL": "6622382",
+        "WDTGAL": "910533",
+        "WLRRAL": "320655",
+        "WRBWFRBL": "2958493"
+      },
+      "liquidity": "5391.194",
+      "reserves": "2958.493"
+    },
+    {
+      "date": "2026-02-18",
+      "gap": "2435.232",
+      "inputs": {
+        "WALCL": "6613395",
+        "WDTGAL": "888854",
+        "WLRRAL": "329348",
+        "WRBWFRBL": "2959961"
+      },
+      "liquidity": "5395.193",
+      "reserves": "2959.961"
+    },
+    {
+      "date": "2026-02-25",
+      "gap": "2441.171",
+      "inputs": {
+        "WALCL": "6613797",
+        "WDTGAL": "838975",
+        "WLRRAL": "329222",
+        "WRBWFRBL": "3004429"
+      },
+      "liquidity": "5445.6",
+      "reserves": "3004.429"
+    },
+    {
+      "date": "2026-03-04",
+      "gap": "2448.695",
+      "inputs": {
+        "WALCL": "6628894",
+        "WDTGAL": "846979",
+        "WLRRAL": "319504",
+        "WRBWFRBL": "3013716"
+      },
+      "liquidity": "5462.411",
+      "reserves": "3013.716"
+    },
+    {
+      "date": "2026-03-11",
+      "gap": "2441.927",
+      "inputs": {
+        "WALCL": "6646344",
+        "WDTGAL": "805806",
+        "WLRRAL": "325460",
+        "WRBWFRBL": "3073151"
+      },
+      "liquidity": "5515.078",
+      "reserves": "3073.151"
+    },
+    {
+      "date": "2026-03-18",
+      "gap": "2449.945",
+      "inputs": {
+        "WALCL": "6655939",
+        "WDTGAL": "875833",
+        "WLRRAL": "331352",
+        "WRBWFRBL": "2998809"
+      },
+      "liquidity": "5448.754",
+      "reserves": "2998.809"
+    },
+    {
+      "date": "2026-03-25",
+      "gap": "2449.54",
+      "inputs": {
+        "WALCL": "6657161",
+        "WDTGAL": "837412",
+        "WLRRAL": "334136",
+        "WRBWFRBL": "3036073"
+      },
+      "liquidity": "5485.613",
+      "reserves": "3036.073"
+    },
+    {
+      "date": "2026-04-01",
+      "gap": "2467.737",
+      "inputs": {
+        "WALCL": "6675344",
+        "WDTGAL": "803553",
+        "WLRRAL": "339594",
+        "WRBWFRBL": "3064460"
+      },
+      "liquidity": "5532.197",
+      "reserves": "3064.46"
+    },
+    {
+      "date": "2026-04-08",
+      "gap": "2468.4",
+      "inputs": {
+        "WALCL": "6693871",
+        "WDTGAL": "697079",
+        "WLRRAL": "344859",
+        "WRBWFRBL": "3183533"
+      },
+      "liquidity": "5651.933",
+      "reserves": "3183.533"
+    },
+    {
+      "date": "2026-04-15",
+      "gap": "2461.209",
+      "inputs": {
+        "WALCL": "6705696",
+        "WDTGAL": "924435",
+        "WLRRAL": "339866",
+        "WRBWFRBL": "2980186"
+      },
+      "liquidity": "5441.395",
+      "reserves": "2980.186"
+    },
+    {
+      "date": "2026-04-22",
+      "gap": "2460.547",
+      "inputs": {
+        "WALCL": "6707419",
+        "WDTGAL": "1007172",
+        "WLRRAL": "325124",
+        "WRBWFRBL": "2914576"
+      },
+      "liquidity": "5375.123",
+      "reserves": "2914.576"
+    },
+    {
+      "date": "2026-04-29",
+      "gap": "2469.984",
+      "inputs": {
+        "WALCL": "6699950",
+        "WDTGAL": "988102",
+        "WLRRAL": "322711",
+        "WRBWFRBL": "2919153"
+      },
+      "liquidity": "5389.137",
+      "reserves": "2919.153"
+    },
+    {
+      "date": "2026-05-06",
+      "gap": "2472.581",
+      "inputs": {
+        "WALCL": "6709505",
+        "WDTGAL": "862757",
+        "WLRRAL": "322686",
+        "WRBWFRBL": "3051481"
+      },
+      "liquidity": "5524.062",
+      "reserves": "3051.481"
+    },
+    {
+      "date": "2026-05-13",
+      "gap": "2477.368",
+      "inputs": {
+        "WALCL": "6728502",
+        "WDTGAL": "807420",
+        "WLRRAL": "326347",
+        "WRBWFRBL": "3117367"
+      },
+      "liquidity": "5594.735",
+      "reserves": "3117.367"
+    },
+    {
+      "date": "2026-05-20",
+      "gap": "2482.321",
+      "inputs": {
+        "WALCL": "6713643",
+        "WDTGAL": "781979",
+        "WLRRAL": "342628",
+        "WRBWFRBL": "3106715"
+      },
+      "liquidity": "5589.036",
+      "reserves": "3106.715"
+    },
+    {
+      "date": "2026-05-27",
+      "gap": "2493.819",
+      "inputs": {
+        "WALCL": "6704383",
+        "WDTGAL": "842660",
+        "WLRRAL": "300879",
+        "WRBWFRBL": "3067025"
+      },
+      "liquidity": "5560.844",
+      "reserves": "3067.025"
+    },
+    {
+      "date": "2026-06-03",
+      "gap": "2494.331",
+      "inputs": {
+        "WALCL": "6711495",
+        "WDTGAL": "845722",
+        "WLRRAL": "325788",
+        "WRBWFRBL": "3045654"
+      },
+      "liquidity": "5539.985",
+      "reserves": "3045.654"
+    },
+    {
+      "date": "2026-06-10",
+      "gap": "2495.561",
+      "inputs": {
+        "WALCL": "6725397",
+        "WDTGAL": "801084",
+        "WLRRAL": "317298",
+        "WRBWFRBL": "3111454"
+      },
+      "liquidity": "5607.015",
+      "reserves": "3111.454"
+    },
+    {
+      "date": "2026-06-17",
+      "gap": "2507.942",
+      "inputs": {
+        "WALCL": "6736424",
+        "WDTGAL": "956502",
+        "WLRRAL": "335625",
+        "WRBWFRBL": "2936355"
+      },
+      "liquidity": "5444.297",
+      "reserves": "2936.355"
+    },
+    {
+      "date": "2026-06-24",
+      "gap": "2542.807",
+      "inputs": {
+        "WALCL": "6735645",
+        "WDTGAL": "901845",
+        "WLRRAL": "336528",
+        "WRBWFRBL": "2954465"
+      },
+      "liquidity": "5497.272",
+      "reserves": "2954.465"
+    },
+    {
+      "date": "2026-07-01",
+      "gap": "2501.748",
+      "inputs": {
+        "WALCL": "6724564",
+        "WDTGAL": "807359",
+        "WLRRAL": "338438",
+        "WRBWFRBL": "3077019"
+      },
+      "liquidity": "5578.767",
+      "reserves": "3077.019"
+    },
+    {
+      "date": "2026-07-08",
+      "gap": "2500.513",
+      "inputs": {
+        "WALCL": "6735609",
+        "WDTGAL": "749244",
+        "WLRRAL": "348475",
+        "WRBWFRBL": "3137377"
+      },
+      "liquidity": "5637.89",
+      "reserves": "3137.377"
+    },
+    {
+      "date": "2026-07-15",
+      "gap": "2492.525",
+      "inputs": {
+        "WALCL": "6743028",
+        "WDTGAL": "795976",
+        "WLRRAL": "354079",
+        "WRBWFRBL": "3100448"
+      },
+      "liquidity": "5592.973",
+      "reserves": "3100.448"
+    },
+    {
+      "date": "2026-07-22",
+      "gap": "2494.362",
+      "inputs": {
+        "WALCL": "6747378",
+        "WDTGAL": "835417",
+        "WLRRAL": "352703",
+        "WRBWFRBL": "3064896"
+      },
+      "liquidity": "5559.258",
+      "reserves": "3064.896"
+    },
+    {
+      "date": "2026-07-29",
+      "gap": "2486.156",
+      "inputs": {
+        "WALCL": "6738190",
+        "WDTGAL": "970442",
+        "WLRRAL": "337051",
+        "WRBWFRBL": "2944541"
+      },
+      "liquidity": "5430.697",
+      "reserves": "2944.541"
+    },
+    {
+      "date": "2026-08-05",
+      "gap": "2497.143",
+      "inputs": {
+        "WALCL": "6748567",
+        "WDTGAL": "929325",
+        "WLRRAL": "319368",
+        "WRBWFRBL": "3002731"
+      },
+      "liquidity": "5499.874",
+      "reserves": "3002.731"
+    },
+    {
+      "date": "2026-08-12",
+      "gap": "2494.803",
+      "inputs": {
+        "WALCL": "6759955",
+        "WDTGAL": "959405",
+        "WLRRAL": "358117",
+        "WRBWFRBL": "2947630"
+      },
+      "liquidity": "5442.433",
+      "reserves": "2947.63"
+    },
+    {
+      "date": "2026-08-19",
+      "gap": "2504.79",
+      "inputs": {
+        "WALCL": "6745699",
+        "WDTGAL": "936406",
+        "WLRRAL": "373686",
+        "WRBWFRBL": "2930817"
+      },
+      "liquidity": "5435.607",
+      "reserves": "2930.817"
+    },
+    {
+      "date": "2026-08-26",
+      "gap": "2498.495",
+      "inputs": {
+        "WALCL": "6730912",
+        "WDTGAL": "959435",
+        "WLRRAL": "356158",
+        "WRBWFRBL": "2916824"
+      },
+      "liquidity": "5415.319",
+      "reserves": "2916.824"
+    },
+    {
+      "date": "2026-09-02",
+      "gap": "2505.813",
+      "inputs": {
+        "WALCL": "6737204",
+        "WDTGAL": "944364",
+        "WLRRAL": "357742",
+        "WRBWFRBL": "2929285"
+      },
+      "liquidity": "5435.098",
+      "reserves": "2929.285"
+    },
+    {
+      "date": "2026-09-09",
+      "gap": "2510.743",
+      "inputs": {
+        "WALCL": "6740619",
+        "WDTGAL": "843705",
+        "WLRRAL": "349663",
+        "WRBWFRBL": "3036508"
+      },
+      "liquidity": "5547.251",
+      "reserves": "3036.508"
+    },
+    {
+      "date": "2026-09-16",
+      "gap": "2509.501",
+      "inputs": {
+        "WALCL": "6746548",
+        "WDTGAL": "991708",
+        "WLRRAL": "323803",
+        "WRBWFRBL": "2921536"
+      },
+      "liquidity": "5431.037",
+      "reserves": "2921.536"
+    },
+    {
+      "date": "2026-09-23",
+      "gap": "2509.74",
+      "inputs": {
+        "WALCL": "6747704",
+        "WDTGAL": "947317",
+        "WLRRAL": "320725",
+        "WRBWFRBL": "2969922"
+      },
+      "liquidity": "5479.662",
+      "reserves": "2969.922"
+    },
+    {
+      "date": "2026-09-30",
+      "gap": "2515.416",
+      "inputs": {
+        "WALCL": "6743031",
+        "WDTGAL": "984046",
+        "WLRRAL": "361883",
+        "WRBWFRBL": "2881686"
+      },
+      "liquidity": "5397.102",
+      "reserves": "2881.686"
+    },
+    {
+      "date": "2026-10-07",
+      "gap": "2505.972",
+      "inputs": {
+        "WALCL": "6747560",
+        "WDTGAL": "885783",
+        "WLRRAL": "333739",
+        "WRBWFRBL": "3022066"
+      },
+      "liquidity": "5528.038",
+      "reserves": "3022.066"
+    },
+    {
+      "date": "2026-10-14",
+      "gap": "2512.163",
+      "inputs": {
+        "WALCL": "6755639",
+        "WDTGAL": "885823",
+        "WLRRAL": "326799",
+        "WRBWFRBL": "3030854"
+      },
+      "liquidity": "5543.017",
+      "reserves": "3030.854"
+    }
+  ],
+  "schema": 1,
+  "snapshot_id": "public-30855ad1a04b2439afc3",
+  "sources": [
+    {
+      "bytes": 2797,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Fed assets",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Total Assets (Less Eliminations from Consolidation): Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/public-30855ad1a04b2439afc3/raw/WALCL.csv",
+      "file": "raw/WALCL.csv",
+      "first_observation": "2024-01-03",
+      "label": "Fed assets",
+      "last_observation": "2026-10-14",
+      "latest_age_days": 7,
+      "latest_valid_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:03+00:00",
+      "series": "WALCL",
+      "sha256": "119f267b9d9583ac975b74beff20e6868e6e3b08ef6d45ccbf27a6e261418b5a",
+      "source_page": "https://fred.stlouisfed.org/series/WALCL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WALCL&cosd=2024-01-01"
+    },
+    {
+      "bytes": 2653,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Treasury general account",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "U.S. Treasury, General Account: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/public-30855ad1a04b2439afc3/raw/WDTGAL.csv",
+      "file": "raw/WDTGAL.csv",
+      "first_observation": "2024-01-03",
+      "label": "Treasury general account",
+      "last_observation": "2026-10-14",
+      "latest_age_days": 7,
+      "latest_valid_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:07+00:00",
+      "series": "WDTGAL",
+      "sha256": "0a6fbece75a0a586238dd96601c1de558a3349de64fef8887a04c85fb4412f61",
+      "source_page": "https://fred.stlouisfed.org/series/WDTGAL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WDTGAL&cosd=2024-01-01"
+    },
+    {
+      "bytes": 2654,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Total reverse repos",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Liabilities: Reverse Repurchase Agreements: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/public-30855ad1a04b2439afc3/raw/WLRRAL.csv",
+      "file": "raw/WLRRAL.csv",
+      "first_observation": "2024-01-03",
+      "label": "Total reverse repos",
+      "last_observation": "2026-10-14",
+      "latest_age_days": 7,
+      "latest_valid_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:09+00:00",
+      "series": "WLRRAL",
+      "sha256": "45b94a0115221a235c60296a1a148838b45b91099b5e02a924677fc2b66a317a",
+      "source_page": "https://fred.stlouisfed.org/series/WLRRAL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WLRRAL&cosd=2024-01-01"
+    },
+    {
+      "bytes": 2800,
+      "contract": {
+        "basis": "Wednesday level",
+        "currency": "USD",
+        "frequency": "weekly",
+        "label": "Reserve balances",
+        "seasonal_adjustment": "NSA",
+        "title_fragment": "Reserve Balances with Federal Reserve Banks: Wednesday Level",
+        "unit": "USD millions"
+      },
+      "evidence_path": "evidence/public-30855ad1a04b2439afc3/raw/WRBWFRBL.csv",
+      "file": "raw/WRBWFRBL.csv",
+      "first_observation": "2024-01-03",
+      "label": "Reserve balances",
+      "last_observation": "2026-10-14",
+      "latest_age_days": 7,
+      "latest_valid_observation": "2026-10-14",
+      "license": "Public Domain: Citation Requested; see DATA_LICENSE.md",
+      "missing_values": 0,
+      "observations": 146,
+      "origin": "Board of Governors of the Federal Reserve System (US), H.4.1, via FRED",
+      "publication_dates": "unknown; not supplied by this CSV",
+      "retrieved_at": "2026-10-21T11:37:11+00:00",
+      "series": "WRBWFRBL",
+      "sha256": "f2bc1e632815f4047dec771c6654e12da9865a863c7a926d3a91257fc54643d6",
+      "source_page": "https://fred.stlouisfed.org/series/WRBWFRBL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WRBWFRBL&cosd=2024-01-01"
+    }
+  ],
+  "status": "within_age_threshold",
+  "warnings": [],
+  "windows": {
+    "1": {
+      "contributions": {
+        "WALCL": "8.079",
+        "WDTGAL": "-0.04",
+        "WLRRAL": "6.94"
+      },
+      "end": "2026-10-14",
+      "gap": "6.191",
+      "input_deltas": {
+        "WALCL": "8.079",
+        "WDTGAL": "0.04",
+        "WLRRAL": "-6.94",
+        "WRBWFRBL": "8.788"
+      },
+      "liquidity": "14.979",
+      "missing_interior_weeks": 0,
+      "reserves": "8.788",
+      "start": "2026-10-07",
+      "weeks": 1
+    },
+    "13": {
+      "contributions": {
+        "WALCL": "12.611",
+        "WDTGAL": "-89.847",
+        "WLRRAL": "27.28"
+      },
+      "end": "2026-10-14",
+      "gap": "19.638",
+      "input_deltas": {
+        "WALCL": "12.611",
+        "WDTGAL": "89.847",
+        "WLRRAL": "-27.28",
+        "WRBWFRBL": "-69.594"
+      },
+      "liquidity": "-49.956",
+      "missing_interior_weeks": 0,
+      "reserves": "-69.594",
+      "start": "2026-07-15",
+      "weeks": 13
+    },
+    "4": {
+      "contributions": {
+        "WALCL": "9.091",
+        "WDTGAL": "105.885",
+        "WLRRAL": "-2.996"
+      },
+      "end": "2026-10-14",
+      "gap": "2.662",
+      "input_deltas": {
+        "WALCL": "9.091",
+        "WDTGAL": "-105.885",
+        "WLRRAL": "2.996",
+        "WRBWFRBL": "109.318"
+      },
+      "liquidity": "111.980",
+      "missing_interior_weeks": 0,
+      "reserves": "109.318",
+      "start": "2026-09-16",
+      "weeks": 4
+    }
+  }
+}
