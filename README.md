@@ -21,7 +21,7 @@ The public evidence is sufficient to reproduce these calculations and report byt
 
 Download or clone this repository, then choose a source checkout or a virtual environment. The project is not claimed to be published on PyPI.
 
-For an installed CLI, from the repository root:
+For an installed CLI, use Python 3.9 or later and run from the repository root:
 
 ```sh
 python3 -m venv .venv
@@ -33,7 +33,20 @@ open-macro-lab demo
 open-macro-lab verify-report build/demo
 ```
 
-On Windows, activate with `.venv\Scripts\activate`. Building an installation may download the declared setuptools build dependency; the installed research package has **zero runtime dependencies**. The CLI works outside the checkout. To avoid installation and network altogether, use the source commands below.
+On Windows, run these commands in PowerShell or Command Prompt without activating the environment:
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install .
+.\.venv\Scripts\open-macro-lab.exe --version
+.\.venv\Scripts\open-macro-lab.exe verify-report examples/official
+.\.venv\Scripts\open-macro-lab.exe demo
+.\.venv\Scripts\open-macro-lab.exe verify-report build/demo
+```
+
+If the `py` launcher is unavailable, substitute your Python 3.9+ interpreter for `py -3` in the first command.
+
+Building an installation may download the declared setuptools build dependency; the installed research package has **zero runtime dependencies**. The CLI works outside the checkout. To avoid installation and network altogether, use the source commands below.
 
 ## Try it offline
 
