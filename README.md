@@ -95,6 +95,8 @@ python3 -m open_macro_lab verify SNAPSHOT_PATH
 python3 -m open_macro_lab report --snapshot SNAPSHOT_PATH --output build/live
 ```
 
+`report` writes directly into `--output` (default: `build/live`), overwriting any existing `report.json`, `methodology.json`, `history.csv`, and `index.html` there. Choose a fresh output directory for each manual report to preserve earlier reports. In contrast, `update` creates immutable per-capture directories and does not overwrite existing issues.
+
 On a later capture, compare against the saved previous path:
 
 ```sh
