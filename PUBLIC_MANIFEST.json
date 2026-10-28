@@ -310,8 +310,8 @@
       "sha256": "9f80cc6d4367055f80606221a06c272c1566e080ac3892738e5eb8f57134df7f"
     },
     "tests/test_workflow.py": {
-      "bytes": 13927,
-      "sha256": "4c405546c98e877ebab2f6e9afb129ac3ec792c7e88ab724b15c701b659cc2ad"
+      "bytes": 14887,
+      "sha256": "3078e08a51541085f7ee2b4eb45f3907257c01c15501a2694031adbe9ddc6f5e"
     }
   },
   "license": "MIT (source and synthetic material; source-data rights separate)",

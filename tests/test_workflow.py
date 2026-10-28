@@ -184,6 +184,21 @@ class WorkflowTests(unittest.TestCase):
         with self.assertRaisesRegex(ResearchError, 'payload does not reproduce'):
             verify_report(folder)
 
+    def test_effective_methodology_tampering_is_detected(self):
+        folder = self.report(); file = folder / 'methodology.json'
+        original = json.loads(file.read_text(encoding='utf-8'))
+        outputs = {name: (folder / name).read_bytes() for name in ('report.json', 'history.csv', 'index.html')}
+        for change_version, error in ((False, 'new version'), (True, 'payload does not reproduce')):
+            with self.subTest(change_version=change_version):
+                modified = copy.deepcopy(original)
+                modified['interpretation'] += ' Altered.'
+                if change_version:
+                    modified['version'] = 'test-altered-method'
+                file.write_text(json.dumps(modified), encoding='utf-8')
+                with self.assertRaisesRegex(ResearchError, error):
+                    verify_report(folder)
+                self.assertEqual(outputs, {name: (folder / name).read_bytes() for name in outputs})
+
     def test_csv_and_html_tampering_are_detected(self):
         folder = self.report()
         for name in ('history.csv', 'index.html'):
