@@ -306,8 +306,8 @@
       "sha256": "e26e1827f4451c86f1c2aae8f5a958a008025b370187a427e86a44a760c7dbef"
     },
     "tests/test_research.py": {
-      "bytes": 21071,
-      "sha256": "9f80cc6d4367055f80606221a06c272c1566e080ac3892738e5eb8f57134df7f"
+      "bytes": 21687,
+      "sha256": "03f7fff9136aa109bfdf52abf2b290703ea10f6d6c88f7b59be2bdc7016cb046"
     },
     "tests/test_workflow.py": {
       "bytes": 14887,

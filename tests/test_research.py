@@ -74,6 +74,15 @@ class ContractTests(unittest.TestCase):
             with self.assertRaises(ResearchError):
                 parse_csv(raw,"WALCL",self.meta,"2025-01-02T00:00:00Z")
 
+    def test_capture_cutoff_uses_utc_date_not_local_offset_date(self):
+        # Local Wednesday can still be Tuesday UTC: do not admit future data.
+        with self.assertRaisesRegex(ResearchError, "Future observation"):
+            self.parse("2025-01-01,1\n", captured="2025-01-01T00:30:00+04:00")
+        # Local Tuesday can already be Wednesday UTC: the observation is valid.
+        rows = self.parse("2025-01-01,1\n", captured="2024-12-31T23:30:00-02:00")
+        self.assertEqual(rows, {date(2025, 1, 1): D(1)})
+        self.assertEqual(rows, self.parse("2025-01-01,1\n", captured="2025-01-01T01:30:00Z"))
+
     def test_timezone_is_required(self):
         with self.assertRaises(ResearchError):
             timestamp("2025-01-02T00:00:00")
